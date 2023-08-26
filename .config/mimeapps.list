@@ -1,0 +1,26 @@
+[Added Associations]
+application/vnd.sqlite3=sqlitebrowser.desktop;
+application/x-ms-dos-executable=portproton.desktop;
+application/xml=google-chrome.desktop;
+image/x-xcursor=nvim.desktop;
+inode/directory=spacefm.desktop;
+model/3mf=PrusaSlicer.desktop;
+model/stl=PrusaSlicer.desktop;
+text/plain=nvim.desktop;
+text/x.gcode=PrusaGcodeviewer.desktop;
+
+[Default Applications]
+application/vnd.sqlite3=sqlitebrowser.desktop;
+application/x-ms-dos-executable=portproton.desktop;
+application/x-www-browser=firefox.desktop;
+application/xml=google-chrome.desktop;
+image/x-xcursor=nvim.desktop;
+inode/directory=spacefm.desktop;
+model/3mf=PrusaSlicer.desktop;
+model/stl=PrusaSlicer.desktop;
+text/plain=nvim.desktop;
+text/x-script.python=nvim.desktop;
+text/x.gcode=PrusaGcodeviewer.desktop;
+x-scheme-handler/http=firefox.desktop;
+x-scheme-handler/https=firefox.desktop;
+x-scheme-handler/terminal=Alacritty.desktop;
