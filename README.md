@@ -1,2 +1,2 @@
 # dotfiles
-<p align="center"><img src="screenshot/hypr.png" /></p>
+<p align="center"><img src="screenshots/hypr.png" /></p>
