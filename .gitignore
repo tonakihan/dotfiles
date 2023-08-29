@@ -1,5 +1,6 @@
-/themes
-/icons
+/themes/*
+/icons/*
+!/icons/default
 /.config/*
 !/.config/alacritty
 /.config/alacritty/themes/ayu_light.yaml
@@ -21,3 +22,4 @@
 !/.config/mimeapps.list
 /.config/pipewire
 /.config/wireplumber
+

@@ -1,2 +1,3 @@
 # Dotfiles
-This is my config files collected on archlinux
+<p align="center"><img src="screenshot/hypr.png" /></p>
+

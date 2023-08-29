@@ -10,17 +10,25 @@ text/plain=nvim.desktop;
 text/x.gcode=PrusaGcodeviewer.desktop;
 
 [Default Applications]
+application/pdf=firefox.desktop;
 application/vnd.sqlite3=sqlitebrowser.desktop;
 application/x-ms-dos-executable=portproton.desktop;
 application/x-www-browser=firefox.desktop;
 application/xml=google-chrome.desktop;
+image/jpeg=com.interversehq.qView.desktop;
+image/png=com.interversehq.qView.desktop;
+image/vnd.microsoft.icon=com.interversehq.qView.desktop;
 image/x-xcursor=nvim.desktop;
 inode/directory=spacefm.desktop;
 model/3mf=PrusaSlicer.desktop;
 model/stl=PrusaSlicer.desktop;
+text/css=nvim.desktop;
+text/html=nvim.desktop;
+text/markdown=nvim.desktop;
 text/plain=nvim.desktop;
 text/x-script.python=nvim.desktop;
 text/x.gcode=PrusaGcodeviewer.desktop;
+text/xml=nvim.desktop;
 x-scheme-handler/http=firefox.desktop;
 x-scheme-handler/https=firefox.desktop;
 x-scheme-handler/terminal=Alacritty.desktop;
