@@ -3,118 +3,117 @@
   "position": "top",
   "margin-bottom": 0,
   "modules-left": [
-      "clock",
-      "wlr/workspaces",
-      "custom/updates",
-      "tray",
+    "clock",
+    "wlr/workspaces",
+    "custom/updates",
+    "tray"
   ],
   "modules-center": [
-      "hyprland/window",
+    "hyprland/window"
   ],
   "modules-right": [
-      "network",
-      "temperature",
-      "memory",
-      "cpu",
-      "pulseaudio",
-      "custom/powermenu",
+    "network",
+    "temperature",
+    "memory",
+    "cpu",
+    "pulseaudio",
+    "custom/powermenu"
   ],
   "tray": {
-      "icon-size": 20,
-      "spacing": 10
+    "icon-size": 20,
+    "spacing": 10
   },
   "hyprland/window": {
-      "format": " {}",
-      "rewrite": {
-          "(\\d\\. )?(.*) - Chromium": "<span color=\"#4285F4\"></span>  $2 ",
-          "nvim (.*)": "<span color=\"#57A143\"></span>  $1",
-          "nvim": "<span color=\"#57A143\">  Neovim</span> ",
-          "ranger(.*)": "<span color=\"#ffffff\"></span>  $1",
-          //"kitty (.*)": "<span color=\"#ffffff\"></span>  $1",
-          "Search(.*)": "<span color=\"#a855f7\"></span>  Search$1",
-  },
-  "separate-outputs": false
+    "format": " {}",
+    "rewrite": {
+      "(\\d\\. )?(.*) - Chromium": "<span color=\"#4285F4\"></span>  $2 ",
+      "nvim (.*)": "<span color=\"#57A143\"></span>  $1",
+      "nvim": "<span color=\"#57A143\">  Neovim</span> ",
+      "ranger(.*)": "<span color=\"#ffffff\"></span>  $1",
+      //"kitty (.*)": "<span color=\"#ffffff\"></span>  $1",
+      "Search(.*)": "<span color=\"#a855f7\"></span>  Search$1"
+    },
+    "separate-outputs": false
   },
   "hyprland/submap": {
-      "format": "✌️ {}",
-      "max-length": 8,
-      "tooltip": true
+    "format": "✌️ {}",
+    "max-length": 8,
+    "tooltip": true
   },
   "wlr/workspaces": {
-      "active-only": false,
-      "all-outputs": true,
-      "disable-scroll": false,
-      "on-scroll-up": "hyprctl dispatch workspace -1",
-      "on-scroll-down": "hyprctl dispatch workspace +1",
-	  "on-click": "activate",
-      "sort-by-number": true,
-      "format": "{icon}",
-      "format-icons": {
-        "1": "•",
-        "2": "•",
-        "3": "•",
-        "4": "•",
-        "5": "•",
-        "6": "•",
-        "7": "•",
-        "8": "•",
-        "9": "•",
-        "10": "•",
-        "-99": "•",
-        "active": "○",
-        "default": "•",
-	    "urgent": "",
-      },
+    "active-only": false,
+    "all-outputs": true,
+    "disable-scroll": false,
+    "on-scroll-up": "hyprctl dispatch workspace -1",
+    "on-scroll-down": "hyprctl dispatch workspace +1",
+	"on-click": "activate",
+    "sort-by-number": true,
+    "format": "{icon}",
+    "format-icons": {
+      "1": "•",
+      "2": "•",
+      "3": "•",
+      "4": "•",
+      "5": "•",
+      "6": "•",
+      "7": "•",
+      "8": "•",
+      "9": "•",
+      "10": "•",
+      "-99": "•",
+      "active": "○",
+      "default": "•",
+      "urgent": ""
+    }
   },
 
   "network": {
-      "interface": "enp4s0",
-      "tooltip-format-ethernet": "{ifname} ",
-      "interval": 2,
-      "format": " {bandwidthDownBits}  {bandwidthUpBits}",
+    "interface": "enp4s0",
+    "tooltip-format-ethernet": "{ifname} ",
+    "interval": 2,
+    "format": " {bandwidthDownBits}  {bandwidthUpBits}"
   },
   "temperature": {
-      "format": "{icon} {temperatureC}°C",
-      "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-      "critical-threshold": 80,
-      "format-icons": ["", "", ""]
+    "format": "{icon} {temperatureC}°C",
+    "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+    "critical-threshold": 80,
+    "format-icons": ["", "", ""]
   },
   "memory": {
-      "format": " {}%",
-      "tooltip": "false"
+    "format": " {}%",
+    "tooltip": "false"
   },
   "cpu": {
-      "format": " {usage}%",
-      "tooltip": "false"
+    "format": " {usage}%",
+    "tooltip": "false"
   },
   "custom/powermenu": {
-      "format": "⏻",
-      "tooltip": false,
-      "on-click": "exec wlogout -p layer-shell",
+    "format": "⏻",
+    "tooltip": false,
+    "on-click": "exec wlogout -p layer-shell"
   },
   "pulseaudio": {
-      "format": "{icon} {volume}%",
-      "format-bluetooth": "{volume}% {icon}",
-      "format-muted": " ",
-      "format-icons": {
-          "headphone": "",
-          "hands-free": "",
-          "headset": "",
-          "phone": "",
-          "portable": "",
-          "car": "",
-          "default": ["🔈", "🔊"]
-      },
-      },
-      "scroll-step": 1,
-      "on-click": "pavucontrol"
+    "format": "{icon} {volume}%",
+    "format-bluetooth": "{volume}% {icon}",
+    "format-muted": " ",
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": ["🔈", "🔊"]
+    },
+    "scroll-step": 1,
+    "on-click": "pavucontrol"
   },
   "clock": {
-      //"format": "<span color=\"#56b6c2\"></span> {:%H:%M}",
-      "format": "{:%H:%M}",
-      "interval": 60,
-      "tooltip": true,
-      "tooltip-format": "{:%d %B %H:%M}"
+    //"format": "<span color=\"#56b6c2\"></span> {:%H:%M}",
+    "format": "{:%H:%M}",
+    "interval": 60,
+    "tooltip": true,
+    "tooltip-format": "{:%d %B %H:%M}"
   }
 }
 

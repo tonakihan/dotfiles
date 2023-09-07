@@ -11,10 +11,11 @@ filetype plugin on
 " Enable Omnicomplete features
 "set omnifunc=syntaxcomplete#Complete
 
-set tabstop=2
-set softtabstop=2
-set shiftwidth=2
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
 set expandtab
+autocmd FileType html,json setlocal tabstop=2 shiftwidth=2 softtabstop=2
 
 syntax enable
 
@@ -46,8 +47,8 @@ call plug#begin()
   Plug 'prettier/vim-prettier', {
         \ 'do': 'npm install' 
         \ }
-  " Autochange for html
-  Plug 'AndrewRadev/tagalong.vim'
+  " Autochange for html (works is not good)
+  "Plug 'AndrewRadev/tagalong.vim' 
   " ? for html (find info about this)
   Plug 'tpope/vim-surround'
 call plug#end()

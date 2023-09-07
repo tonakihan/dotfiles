@@ -11,6 +11,7 @@ text/x.gcode=PrusaGcodeviewer.desktop;
 
 [Default Applications]
 application/pdf=firefox.desktop;
+application/toml=nvim.desktop;
 application/vnd.sqlite3=sqlitebrowser.desktop;
 application/x-ms-dos-executable=portproton.desktop;
 application/x-www-browser=firefox.desktop;
@@ -24,6 +25,7 @@ model/3mf=PrusaSlicer.desktop;
 model/stl=PrusaSlicer.desktop;
 text/css=nvim.desktop;
 text/html=nvim.desktop;
+text/javascript=nvim.desktop;
 text/markdown=nvim.desktop;
 text/plain=nvim.desktop;
 text/x-script.python=nvim.desktop;
