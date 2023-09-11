@@ -11,6 +11,7 @@
     "hyprland/window"
   ],
   "modules-right": [
+    "hyprland/language",
     "network",
     "temperature",
     "memory",
@@ -65,7 +66,11 @@
       "urgent": ""
     }
   },
-
+  "hyprland/language": {
+    "format": "{}",
+    "format-en": "en",
+    "format-ru": "ru",
+  },
   "network": {
     "interface": "enp4s0",
     "format": "{ipaddr}",

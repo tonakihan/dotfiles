@@ -38,13 +38,17 @@ window#waybar {
 #clock,
 #window,
 #pulseaudio,
-#network {
+#network,
+#language {
   padding: 4px 8px;
   background-color: #303643;
   border-radius: 30px;
   margin: 6px 4px;
 }
 
+#language {
+  color: #56f595;
+}
 #window {
   color: #929db1;
 }
@@ -87,7 +91,7 @@ window#waybar {
 }
 
 #clock {
-/* color: #fff; */
+  color: #dddddd;
   margin-left: 8px;
   /* opacity: 0.7; */
   /* font-size: 18px; */
