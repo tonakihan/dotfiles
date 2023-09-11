@@ -4,8 +4,7 @@
   "margin-bottom": 0,
   "modules-left": [
     "clock",
-    "wlr/workspaces",
-    "custom/updates",
+    "hyprland/workspaces",
     "tray"
   ],
   "modules-center": [
@@ -40,12 +39,12 @@
     "max-length": 8,
     "tooltip": true
   },
-  "wlr/workspaces": {
+  "hyprland/workspaces": {
     "active-only": false,
     "all-outputs": true,
     "disable-scroll": false,
-    "on-scroll-up": "hyprctl dispatch workspace -1",
-    "on-scroll-down": "hyprctl dispatch workspace +1",
+    "on-scroll-up": "hyprctl dispatch workspace e-1",
+    "on-scroll-down": "hyprctl dispatch workspace e+1",
 	"on-click": "activate",
     "sort-by-number": true,
     "format": "{icon}",
@@ -69,9 +68,9 @@
 
   "network": {
     "interface": "enp4s0",
+    "format": "{ipaddr}",
     "tooltip-format-ethernet": "{ifname} ",
     "interval": 2,
-    "format": " {bandwidthDownBits}  {bandwidthUpBits}"
   },
   "temperature": {
     "format": "{icon} {temperatureC}°C",
