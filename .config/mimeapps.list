@@ -30,6 +30,7 @@ text/html=nvim.desktop;
 text/javascript=nvim.desktop;
 text/markdown=nvim.desktop;
 text/plain=nvim.desktop;
+text/x-log=nvim.desktop;
 text/x-script.python=nvim.desktop;
 text/x.gcode=PrusaGcodeviewer.desktop;
 text/xml=nvim.desktop;
