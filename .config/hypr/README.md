@@ -1,18 +1,19 @@
 # Hyprland
 
 ## Install
-Dependencies
-    - waybar
-    - wlogout
-    - hyprpaper 
-    - corectrl (optional)
-    - wofi
-    - grim
-    - slurp
-    - alacritty
-    - swaylock
-    - tuigreet (optional)
-    - greetd (optional)
+| Dependencies |
+|:----|
+| waybar |
+| wlogout |
+| hyprpaper |
+| wofi |
+| grim | 
+| slurp |
+| alacritty |
+| swaylock |
+| tuigreet (optional) |
+| greetd (optional) |
+| corectrl (optional) |
 
 ``` bash
 curl -L -o dotfiles.tar.gz https://github.com/tonakihan/dotfiles/archive/main.tar.gz
@@ -21,7 +22,7 @@ cd dotiles-main
 
 cp -ri .config $HOME/
 ```
-
+___
 Optional 
 ``` bash
 ### Login Manager ###
