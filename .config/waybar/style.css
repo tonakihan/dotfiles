@@ -7,7 +7,7 @@
 }
 
 window#waybar {
-  background: rgba(26,51,88,00);/*1e222a*/
+  background: rgba(26,51,88,00);
   color: #eeeeef;
   font-size: 14px;
   font-family: "Hack Nerd Font";
@@ -27,7 +27,7 @@ window#waybar {
 /* Fix: active workspace doesn't show up */
 /* #workspaces button.focused { */
 #workspaces button.active {
-  color: #6957ff;
+  color: #ffbf61;
 }
 
 #custom-powermenu,
@@ -93,6 +93,4 @@ window#waybar {
 #clock {
   color: #dddddd;
   margin-left: 8px;
-  /* opacity: 0.7; */
-  /* font-size: 18px; */
 }
