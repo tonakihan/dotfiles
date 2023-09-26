@@ -24,14 +24,15 @@
     "spacing": 10
   },
   "hyprland/window": {
-    "format": " {}",
+    "format": "{}",
     "rewrite": {
-      "(\\d\\. )?(.*) - Chromium": "<span color=\"#4285F4\"></span>  $2 ",
-      "nvim (.*)": "<span color=\"#57A143\"></span>  $1",
-      "nvim": "<span color=\"#57A143\">  Neovim</span> ",
-      "ranger(.*)": "<span color=\"#ffffff\"></span>  $1",
-      //"kitty (.*)": "<span color=\"#ffffff\"></span>  $1",
-      "Search(.*)": "<span color=\"#a855f7\"></span>  Search$1"
+      "(\\d\\. )?(.*) - Chromium": "<span color='#4285F4'></span>  $2",
+      "(\\d\\. )?(.*) - Google Chrome": "<span color='#FFBF00'></span>  $2",
+      "(\\d\\. )?(.*) — Mozilla Firefox": "<span color='#FF4433'></span>  $2",
+      "nvim (.*)": "<span color='#57A143'></span>  $1",
+      "nvim": "<span color='#57A143'>  Neovim</span> ",
+      "ranger(.*)": "<span color='#ffffff'>🖿</span>  $1",
+      "Search(.*)": "<span color='#a855f7'></span>  Search$1"
     },
     "separate-outputs": false
   },

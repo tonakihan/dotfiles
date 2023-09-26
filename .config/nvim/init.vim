@@ -15,6 +15,7 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set expandtab
+autocmd BufNewFile,BufRead *.ejs set filetype=html
 autocmd FileType html,json setlocal tabstop=2 shiftwidth=2 softtabstop=2
 
 syntax enable
