@@ -26,9 +26,11 @@
   "hyprland/window": {
     "format": "{}",
     "rewrite": {
+      "": "<span color='#0FAFFF'>(-.-#)</span> Zzz..",
       "(\\d\\. )?(.*) - Chromium": "<span color='#4285F4'></span>  $2",
       "(\\d\\. )?(.*) - Google Chrome": "<span color='#FFBF00'></span>  $2",
       "(\\d\\. )?(.*) — Mozilla Firefox": "<span color='#FF4433'></span>  $2",
+      "Mozilla Firefox": "<span color='#FF4433'></span>",
       "nvim (.*)": "<span color='#57A143'></span>  $1",
       "nvim": "<span color='#57A143'>  Neovim</span> ",
       "ranger(.*)": "<span color='#ffffff'>🖿</span>  $1",
