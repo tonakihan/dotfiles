@@ -1,25 +1,25 @@
 /themes/*
 /icons/*
 !/icons/default
-/.config/*
-!/.config/alacritty
-/.config/alacritty/themes/ayu_light.yaml
-/.config/alacritty/themes/city_lights.yaml
-/.config/alacritty/themes/monokai_pro.yaml
-!/.config/dunst
-!/.config/fish
-!/.config/flameshot
-!/.config/handlr
-!/.config/hypr
-!/.config/i3
-!/.config/neofetch
-!/.config/nvim
-!/.config/polybar
-!/.config/rofi
-!/.config/waybar
-!/.config/wlogout
-!/.config/wofi
-!/.config/mimeapps.list
-/.config/pipewire
-/.config/wireplumber
+/Shared config/*
+!/Shared config/alacritty
+/Shared config/alacritty/themes/ayu_light.yaml
+/Shared config/alacritty/themes/city_lights.yaml
+/Shared config/alacritty/themes/monokai_pro.yaml
+!/Shared config/dunst
+!/Shared config/fish
+!/Shared config/flameshot
+!/Shared config/handlr
+!/Shared config/hypr
+!/Shared config/i3
+!/Shared config/neofetch
+!/Shared config/nvim
+!/Shared config/polybar
+!/Shared config/rofi
+!/Shared config/waybar
+!/Shared config/wlogout
+!/Shared config/wofi
+!/Shared config/mimeapps.list
+/Shared config/pipewire
+/Shared config/wireplumber
 

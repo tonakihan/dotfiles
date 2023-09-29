@@ -2,5 +2,5 @@
 <p align="center"><img width=70% src="screenshots/hypr.png" /></p>
 
 ## Installation
- - [Hyprland](.config/hypr/README.md)
- - [i3](.config/i3/README.md)
+ - [Hyprland](Shared config/hypr/README.md)
+ - [i3](Shared config/i3/README.md)
