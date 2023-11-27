@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 if [[ $1 == "--help" ]]; then
-    clear
     cat << EOF
+
         Folder:
           ./etc - config files (example) for /etc  [don't install]
           ./icons - later                          [by default save in ~/.local/share/icons]
@@ -13,14 +13,13 @@ if [[ $1 == "--help" ]]; then
           ./WM - environment specific config files [by default save in ~/.config]
         
         If there is an evironment variable \$XDG_CONFIG_HOME then it will be installed not in ~/.config, but in \$XDG_CONFIG_HOME
+
 EOF
     exit 0
 fi
 
-if [[ $@ == *"--link"* ]]; then 
-    $setForCP = "-frs"
-else
-    $setForCP = "-fr"
+if [[ $@ == *"--link"* ]]; then installCMD="ln -s"
+else                            installCMD="cp -fr" 
 fi
 
 installWM() { 
@@ -29,11 +28,17 @@ installWM() {
         exit 1
     fi
     
-    cp $setForCP ./WM/$1/* $XDG_CONFIG_HOME
+    for file in $PWD/WM/$1/*; do
+        file=$( basename ${file//' '} ) #TODO: Переделать
+        $installCMD $PWD/WM/$1/$file $XDG_CONFIG_HOME/$file
+    done
 }
 
 installShared() { 
-    cp $setForCP ./Shared\ config/* $XDF_CONFIG_HOME
+    for file in $PWD/Shared\ config/*; do
+        file=$( basename ${file//' '} )
+        $installCMD $PWD/Shared\ config/$file $XDG_CONFIG_HOME/$file
+    done
 }
 
 getConfigDir() {
@@ -50,16 +55,26 @@ getConfigDir() {
 }
 
 saveOldConfig() {
-    echo "Your $XDG_CONFIG_HOME save as ~/.config_old"
-    cp -ri $XDG_CONFIG_HOME ~/.config_old
+    echo "Do I needed save your older files from ~/.config? By default - no"
+    read -p "Yes or No : " -r setSaveFiles
+
+    case $setSaveFiles in
+        "Yes" | "Y" | "y")
+            echo "Your $XDG_CONFIG_HOME save as ~/.config_old"
+            cp -r $XDG_CONFIG_HOME ~/.config_old;;
+        "No" | "N" | "n" | *)
+            echo "Ok. Skip."
+    esac
+    rm -R $XDG_CONFIG_HOME/*
+    sleep 1
 }
 
 main() {
     clear
     getConfigDir
-    echo ""
 
     cat << EOF
+
     Select your window manajer:
       [1] Hyprland
       [2] i3wm
