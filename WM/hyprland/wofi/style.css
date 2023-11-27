@@ -15,6 +15,7 @@ window {
 #input:selected,
 #entry:selected,
 #entry:focus {
+  outline-style: none; 
   border-color: transparent;
 }
 

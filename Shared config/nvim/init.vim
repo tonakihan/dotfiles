@@ -5,7 +5,7 @@ set fileencodings=utf8,cp1251
 set number
 set noswapfile
 set cursorline
-"set clipboard^=unnamed,unnamedplus
+set clipboard^=unnamed,unnamedplus
 " Enable plugins and load plugin for the detected file type.
 filetype plugin on
 " Enable Omnicomplete features

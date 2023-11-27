@@ -1,6 +1,16 @@
 #!/usr/bin/env bash
-echo "---" | tee -a /tmp/waybar.log; 
-waybar | tee -a /tmp/waybar.log &disown
+if ! pgrep waybar; then
+    echo "---Launch---" | tee -a /tmp/waybar.log; 
+    waybar | tee -a /tmp/waybar.log &disown
+fi
 
-hyprpaper &disown
-corectrl --minimize-systray &disown
+function runBin {
+    if ! pgrep $0; then
+        $@ &disown
+        echo "$@"
+    fi
+}
+
+
+runBin hyprpaper
+runBin corectrl --minimize-systray

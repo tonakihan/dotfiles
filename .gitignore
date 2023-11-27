@@ -10,15 +10,8 @@
 !/Shared config/fish
 !/Shared config/flameshot
 !/Shared config/handlr
-!/Shared config/hypr
-!/Shared config/i3
 !/Shared config/neofetch
 !/Shared config/nvim
-!/Shared config/polybar
-!/Shared config/rofi
-!/Shared config/waybar
-!/Shared config/wlogout
-!/Shared config/wofi
 !/Shared config/mimeapps.list
 /Shared config/pipewire
 /Shared config/wireplumber

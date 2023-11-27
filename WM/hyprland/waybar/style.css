@@ -44,29 +44,25 @@ window#waybar {
   background-color: #303643;
   border-radius: 30px;
   margin: 6px 4px;
+  margin-bottom: 0;
+}
+#tray {
+  margin-left: 4px;
+  margin-top: 6px;
 }
 
 #language {
   color: #56f595;
 }
+
 #window {
   color: #929db1;
-}
-
-#tray {
-  margin-left: 4px;
 }
 
 #custom-powermenu {
   color: #e06c75;
   padding-right: 8px;
   margin-right: 8px;
-}
-
-#scratchpad {
-  color: #cffafe;
-  padding-right: 4px;
-  padding-left: 4px;
 }
 
 #pulseaudio {

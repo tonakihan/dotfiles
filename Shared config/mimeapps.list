@@ -14,6 +14,7 @@ application/pdf=firefox.desktop;
 application/toml=nvim.desktop;
 application/vnd.sqlite3=sqlitebrowser.desktop;
 application/x-ms-dos-executable=portproton.desktop;
+application/x-msdownload=portproton.desktop;
 application/x-www-browser=firefox.desktop;
 application/x-zerosize=nvim.desktop;
 application/xml=google-chrome.desktop;
