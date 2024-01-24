@@ -2,5 +2,9 @@
 <p align="center"><img width=70% src="screenshots/hypr.png" /></p>
 
 ## Installation
- - [Hyprland](WM/hyprland/README.md)
- - [i3](WM/i3wm/README.md)
+``` bash
+git clone --depth 1 https://github.com/tonakihan/dotfiles
+cd dotfiles
+chmod 755 setup.sh
+./setup.sh
+```
