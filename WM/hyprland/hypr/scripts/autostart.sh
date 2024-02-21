@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 if ! pgrep waybar; then
     echo "---Launch---" | tee -a /tmp/waybar.log; 
-    waybar | tee -a /tmp/waybar.log &disown
+    waybar -l debug | tee -a /tmp/waybar.log &disown
 fi
 
 function runBin {

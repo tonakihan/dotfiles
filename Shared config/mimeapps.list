@@ -12,6 +12,7 @@ text/x.gcode=PrusaGcodeviewer.desktop;
 [Default Applications]
 application/pdf=firefox.desktop;
 application/toml=nvim.desktop;
+application/vnd.microsoft.portable-executable=portproton.desktop;
 application/vnd.sqlite3=sqlitebrowser.desktop;
 application/x-ms-dos-executable=portproton.desktop;
 application/x-msdownload=portproton.desktop;

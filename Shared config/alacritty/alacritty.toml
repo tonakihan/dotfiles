@@ -1,0 +1,27 @@
+import = ["/home/mark/.config/alacritty/themes/custom.toml", "/home/mark/.config/alacritty/p_key.toml"]
+
+[cursor]
+thickness = 0.0
+
+[font]
+size = 9.5
+
+[font.bold]
+family = "Roboto Mono"
+style = "Bold"
+
+[font.bold_italic]
+family = "Roboto Mono"
+style = "Bold Italic"
+
+[font.italic]
+family = "Roboto Mono"
+style = "Italic"
+
+[font.normal]
+family = "Roboto Mono"
+style = "Regular"
+
+[font.offset]
+x = 1
+y = 0
