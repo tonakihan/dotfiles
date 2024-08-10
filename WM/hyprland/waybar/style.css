@@ -21,7 +21,10 @@ window#waybar {
 
 #workspaces button:hover {
   background: none;
-  box-shadow: none;
+  box-shadow: inherit;
+  text-shadow: inherit;
+  /*padding: 0 3px;*/
+
 }
 
 /* Fix: active workspace doesn't show up */

@@ -1,72 +1,113 @@
 #!/usr/bin/env bash
 
+# TODO: Add install scripts
+
+# FIX CS2199
 if [[ $1 == "--help" ]]; then
     cat << EOF
 
-        Folder:
-          ./etc - config files (example) for /etc  [don't install]
-          ./icons - later                          [by default save in ~/.local/share/icons]
-          ./screenshots - later                    [don't install]
-          ./Scripts - useful scripts for WM        [don't install]
-          ./Shared\ config -                       [by default save in ~/.config]
-          ./themes - later                         [by default save in ~/.local/share/themes]
-          ./WM - environment specific config files [by default save in ~/.config]
+    Folders:
+      ./etc - config files (example) for /etc  [don't install]
+      ./icons - later                          [by default save in ~/.local/share/icons]
+      ./screenshots - example workspaces       [don't install]
+      ./Scripts - my local scripts             [don't install]
+      ./"Shared config" - um...                [by default save in ~/.config]
+      ./themes - later                         [by default save in ~/.local/share/themes]
+      ./WM - environment specific config files [by default save in ~/.config]
         
-        If there is an evironment variable \$XDG_CONFIG_HOME then it will be installed not in ~/.config, but in \$XDG_CONFIG_HOME
+    If there is an evironment variable \$XDG_CONFIG_HOME then it will be installed not in ~/.config, but in \$XDG_CONFIG_HOME
 
 EOF
     exit 0
 fi
 
-if [[ $@ == *"--link"* ]]; then installCMD="ln -s"
-else                            installCMD="cp -fr" 
-fi
-
 installWM() { 
     if [[ $1 == "" ]]; then
-        echo "ERR instWM(): not found \$1"
+        echo "ERR: installWM(): not found \$1" >&2
         exit 1
     fi
     
-    for file in $PWD/WM/$1/*; do
-        file=$( basename ${file//' '} ) #TODO: Переделать
-        $installCMD $PWD/WM/$1/$file $XDG_CONFIG_HOME/$file
+    for file in "$PWD/WM/$1/"*; do
+        file=$( basename "$file" )
+        cp -fr "$PWD/WM/$1/$file" "$XDG_CONFIG_HOME/$file"
     done
 }
 
 installShared() { 
-    for file in $PWD/Shared\ config/*; do
-        file=$( basename ${file//' '} )
-        $installCMD $PWD/Shared\ config/$file $XDG_CONFIG_HOME/$file
+    for file in "$PWD/Shared config/"*; do
+        file=$( basename "$file" )
+        cp -fr "$PWD/Shared config/$file" "$XDG_CONFIG_HOME/$file"
     done
 }
 
 getConfigDir() {
     if [[ -z "${XDG_CONFIG_HOME}" ]]; then
         if [[ -z "${HOME}" ]]; then
-            echo "ERR getConfigDir(): Not found"\
-                "environment variables \$HOME"\
-                "or \$XDG_CONFIG_HOME" >&2
+            echo "ERR: getConfigDir(): Not found "\
+                "environment variables \$HOME "\
+                "or \$XDG_CONFIG_HOME " >&2
             exit 1
         fi
-        XDG_CONFIG_HOME=$HOME/.config
+        XDG_CONFIG_HOME="$HOME/.config"
     fi
-    echo "Your config dir is ${XDG_CONFIG_HOME}"
+    echo "Your config dir is \"$XDG_CONFIG_HOME\""
 }
 
-saveOldConfig() {
-    echo "Do I needed save your older files from ~/.config? By default - no"
-    read -p "Yes or No : " -r setSaveFiles
+saveCrrConfig() {
+    echo "Do needed save your current files from ~/.config? By default - yes"
+    read -p "Yes or No?: " -r uSaveFiles
 
-    case $setSaveFiles in
-        "Yes" | "Y" | "y")
-            echo "Your $XDG_CONFIG_HOME save as ~/.config_old"
-            cp -r $XDG_CONFIG_HOME ~/.config_old;;
-        "No" | "N" | "n" | *)
-            echo "Ok. Skip."
+    case $uSaveFiles in
+        "No" | "N" | "n" | "no" )
+            echo "Ok. Skip.";;
+        "Yes" | "Y" | "y" | "yes" | * )
+            echo "Your $(basename "$XDG_CONFIG_HOME") save as ~/.config_old" &&
+            cp -r "$XDG_CONFIG_HOME" "$HOME/.config_old"
+            if [ $? -eq 1 ]; then
+                echo "ERR: saveCC(): Filed to backup the current config files" >&2
+            fi
+            ;;
     esac
-    rm -R $XDG_CONFIG_HOME/*
+}
+
+clearConfigDir() {
+    cat << EOF
+
+    Select method installation:
+      [1] Overwrite the entire directory
+      [2] Overwrite only conflicting configs
+      ---
+      [*] by default (2)
+    
+EOF
+    read -p "[?] Select option: " -r uSelectMethodInstall
+
+    case $uSelectMethodInstall in 
+        1 )
+            rm -R "$XDG_CONFIG_HOME"/*
+            ;;
+        2 | * )
+            # Мб будет нужно: крч можно не заниматься хуйней и использовать cp -f
+            #filesNewConf=("$PWD/Shared config/"* "$PWD/WM/$uSelectWM/"*:)
+            #echo "DBG: filesNC = $filesNewConf"
+            #rm -fr $filesNewConf # хуевая комманда
+            ;;
+    esac
     sleep 1
+}
+
+checkDependencies() {
+    notFoundPkg=()
+    for pkg in $@; do
+        if not which $pkg >> /dev/null 2>&1; then
+            notFoundPkg+=($pkg)
+        fi
+    done
+    if [ ${#notFoundPkg[@]} -ne 0 ]; then
+        printf "\n\tWRNING: Needed to install next pkg: " 
+        printf '%s ' "${notFoundPkg[@]}"
+        printf "\n\n"
+    fi
 }
 
 main() {
@@ -78,25 +119,27 @@ main() {
     Select your window manajer:
       [1] Hyprland
       [2] i3wm
-      [3] none (install only Shared config)
+      [3] none (install only "Shared config")
       ---
-      [q] exit from install
-
+      [q] exit from installer
+      
 EOF
-    read -p "[?] Select option : " -r setWM 
+    read -p "[?] Select option: " -r uSelectWM 
 
-    case $setWM in
+    case $uSelectWM in
         "q" )
             exit 0;;
         [1-3] )
-            saveOldConfig
+            saveCrrConfig
+            clearConfigDir
             installShared;;
         * )
-            echo "ERR main(): Incorrect input"
+            echo "ERR: main(): Incorrect input" >&2
             exit 1;;
     esac
-    case $setWM in
+    case $uSelectWM in
         1 ) #Hyprland
+            checkDependencies waybar wofi wlogout hyprpaper grim slurp alacritty swaylock 
             installWM hyprland;;
         2 ) #i3wm
             installWM i3wm;;

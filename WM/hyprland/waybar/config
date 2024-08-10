@@ -49,7 +49,7 @@
     "disable-scroll": false,
     "on-scroll-up": "hyprctl dispatch workspace e-1",
     "on-scroll-down": "hyprctl dispatch workspace e+1",
-	"on-click": "activate",
+	  "on-click": "activate",
     "sort-by-number": true,
     "format": "{icon}",
     "format-icons": {
@@ -88,11 +88,11 @@
   },
   "memory": {
     "format": " {}%",
-    "tooltip": "false"
+    "tooltip": false
   },
   "cpu": {
     "format": " {usage}%",
-    "tooltip": "false"
+    "tooltip": false
   },
   "custom/powermenu": {
     "format": "⏻",
@@ -104,7 +104,7 @@
     "format-bluetooth": "{volume}% {icon}",
     "format-muted": " ",
     "format-icons": {
-      "headphone": "",
+      "headphone": "",
       "hands-free": "",
       "headset": "",
       "phone": "",

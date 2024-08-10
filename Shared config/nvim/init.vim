@@ -11,9 +11,9 @@ filetype plugin on
 " Enable Omnicomplete features
 "set omnifunc=syntaxcomplete#Complete
 
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
 set expandtab
 autocmd BufNewFile,BufRead *.ejs set filetype=html
 autocmd FileType html,json setlocal tabstop=2 shiftwidth=2 softtabstop=2
@@ -27,7 +27,7 @@ call plug#begin()
   Plug 'itchyny/lightline.vim'
   " Terminal
   Plug 'kassio/neoterm'
-  " Commenting lines
+  " Commenting lines of code
   "Plug 'scrooloose/nerdcommenter'
   Plug 'chrisbra/vim-commentary'
   " File manajer
@@ -36,7 +36,7 @@ call plug#begin()
   Plug 'ryanoasis/vim-devicons'
   " Auto pairs
   Plug 'jiangmiao/auto-pairs'
-  " Themes vim
+  " UIVIM: Themes
   Plug 'NLKNguyen/papercolor-theme'
   " LaTeX
   "Plug 'lervag/vimtex'
@@ -60,16 +60,16 @@ let g:AutoPairs={
       \ "`":"`", '```':'```', '"""':'"""', "'''":"'''"
       \ }
 
-" Themes vim
+" #UIVIM#
+" Themes
 set background=dark
 colorscheme PaperColor
-
+"
 " Different tab level
 let g:indentLine_char='┆'
-
+"
 " Statusline
 set noshowmode
-"set background=light
 let g:lightline = {
       \ 'colorscheme': 'powerline',
       \ }
