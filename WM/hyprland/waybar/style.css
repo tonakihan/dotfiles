@@ -1,95 +1,90 @@
 * {
+  font-family: Roboto Mono;
+  font-size: 13.5px;
+  color: #FFFFFF;
+  min-height: 0;
+  padding: 0;
+  margin: 0;
   border: none;
   border-radius: 0;
-  min-height: 0;
-  margin: 0;
-  padding: 0;
 }
 
 window#waybar {
-  background: rgba(26,51,88,00);
-  color: #eeeeef;
-  font-size: 14px;
-  font-family: "Hack Nerd Font";
-  padding: 0;
+  background-color: rgba(0,0,0,0);
 }
 
+/* Fix: Turn off default animations */
 #workspaces button {
-  padding: 0 5px;
-  color: #eeeeef;
-}
-
-#workspaces button:hover {
+  box-shadow: none;
+  text-shadow: none;
   background: none;
-  box-shadow: inherit;
-  text-shadow: inherit;
-  /*padding: 0 3px;*/
-
+  border: none;
 }
 
-/* Fix: active workspace doesn't show up */
-/* #workspaces button.focused { */
-#workspaces button.active {
-  color: #ffbf61;
+/*all modules (main style)*/
+.module {
+  margin: 0 0.25em;
+  padding: 0.3em 0.5em;
+  border-radius: 1em;
+} 
+/*visable modules*/
+.module {
+  background-color: rgba(48,45,45,0.8);
 }
 
-#custom-powermenu,
-#cpu,
-#temperature,
-#memory,
-#workspaces,
-#clock,
-#window,
-#pulseaudio,
-#network,
-#language {
-  padding: 4px 8px;
-  background-color: #303643;
-  border-radius: 30px;
-  margin: 6px 4px;
-  margin-bottom: 0;
-}
+/*invisable modules (disable background)*/
+#keyboard-state.caps,
 #tray {
-  margin-left: 4px;
-  margin-top: 6px;
+   background-color: rgba(0,0,0,0);
 }
 
+/*color font modules*/
 #language {
   color: #56f595;
 }
-
 #window {
   color: #929db1;
 }
-
 #custom-powermenu {
   color: #e06c75;
-  padding-right: 8px;
-  margin-right: 8px;
 }
-
-#pulseaudio {
+#pulseaudio,
+#wireplumber {
   color: #0fb9b1;
-  padding-right: 7px;
 }
-
 #cpu {
   color: #61afef;
 }
-
 #temperature {
   color: #98c379;
 }
-
 #memory {
   color: #e5c07b;
 }
-
 #network {
   color: #c678dd;
 }
-
 #clock {
   color: #dddddd;
-  margin-left: 8px;
+}
+
+/*Допиливание под мой вкус (animation)*/
+/*
+FIXME: НЕ реализованно в GTK
+#workspaces button :hover {
+  cursor: pointer;
+}
+#workspaces button.active :hover {
+  cursor: default;
+}*/
+
+/*revision*/
+#workspaces button {
+  margin-right: 0.4em; /*fix for symbols*/
+}
+#custom-powermenu{
+  padding-right: 0.7em;
+}
+#window {
+  min-width: 0.9em;
 }

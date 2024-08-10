@@ -1,0 +1,344 @@
+// Modules configuration
+{
+  "clock": {
+    //FIXME: Add support google calendar
+    //"timezone": "America/New_York",
+    "tooltip-format": "<span size='12pt'><big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt></span>",
+    "format-alt": "{:%d.%m.%y}",
+    "calendar": {
+      "format": {
+        "today": "<span color='#33ff33'><b>{}</b></span>"  
+      }
+    },
+    "actions": {
+      "on-scroll-up": "shift_down",
+      "on-scroll-down": "shift_up"
+    } 
+  },
+
+  /** 
+   * Плеер 
+   * TODO Запилить свой аналог с блэкджеком и ш...
+   * - Бегущая строка
+   * - При наведении, чтобы всплывали кнопки
+   */
+  "mpris": {
+    "format": "{player} {status_icon} {title}",
+    //"format-playing": "play",
+    //"format-paused": "pause",
+    //"format-stopped": "stop",
+    "title-len": 20,
+    "player-len": 10,
+    "tooltip": false,
+    "status-icons": {
+      "playing": "▶",
+      "paused": "⏸",
+      "stopped": "⏹"
+    },
+    /*"player_icon": {
+      "default": "▶",
+      "mvp": "🎵"
+    }*/
+    "on-scroll-up": "playerctl volume 0.1 +",
+    "on-scroll-down": "playerctl volume 0.1 -"
+    //"ignored-players": ["firefox"]
+  },
+
+  "tray": {
+    //"icon-size": 21,
+    "spacing": 10,
+    "show-passive-items": true,
+    "reverse-direction": false
+  },
+
+  /**
+   * Needed an "input" group for the user
+   */
+  "keyboard-state#caps": {
+    "capslock": true,
+    "device-path": "/dev/input/event4", //TODO
+    "format": {
+      "capslock": "{icon}"
+    },
+    "format-icons": {
+      "locked": "<span color='#00e600'>CAPS</span>",
+      "unlocked": ""
+    }
+  },
+
+  "systemd-failed-units": {
+    "hide-on-ok": true,
+    "format": "<span color='#b30000'>✗</span> {nr_failed}",
+    "format-ok": "<span color='#00b300'>✓</span>",
+	  "system": true, // Monitor failed systemwide units.
+    "user": false // Ignore failed user units.
+  },
+
+  "gamemode": {
+    "format": "{glyph}",
+    "format-alt": "{glyph} {count}",
+    "glyph": "",
+    "hide-not-running": true,
+    "use-icon": true,
+    "icon-name": "input-gaming-symbolic",
+    "icon-spacing": 4,
+    "icon-size": 20,
+    "tooltip": true,
+    "tooltip-format": "Games running: {count}"
+  },
+
+  /**
+   * Не дает уйти PC в сон.
+   */
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "",
+      "deactivated": ""
+    }
+  },
+
+  "network": {
+    "interface": "enp4s0", // (Optional) TODO
+    "family": "ipv4",
+    //"format-wifi": " {essid} ({signalStrength}%)",
+    "format-ethernet": "",
+    "format-linked": " {ifname} (No IP)",
+    "format-disconnected": "⚠ Disconnected",
+    //"format-alt": "{ipaddr}"
+    "tooltip": true,
+    "tooltip-format": "{ipaddr}"
+  },
+  "network#vpn": {
+    "interface": "wg1", // TODO
+    "family": "ipv4",
+    "format": "VPN",
+    "format-disconnected": "<span color='#666666'>vpn</span>",
+    //"format-alt": "{ipaddr}",
+    "tooltip": true,
+    "tooltip-format": "{ipaddr}",
+    "tooltip-format-disconnected": "Is off",
+    "on-click": "~/.script/vpnSwitch.sh" // FIXME Add script
+  },
+
+  "cpu": {
+    //FIXME Сделать окрашивание цветом от значения
+    "tooltip": false,
+    //"interval": 10,
+    "format": " {usage}%"
+  },
+
+  "memory": {
+    "format": " {}%",
+    "tooltip": false
+  },
+
+  "disk#root": {
+    "interval": 600,
+    "format": "🖴 /:{percentage_used}%",
+    "max-length": 10,
+    "tooltip": false,
+    //"unit": "",
+    "path": "/"
+  },
+  "disk#two": {
+    "interval": 600,
+    "format": "🖴 SSD:{percentage_used}%",
+    "max-length": 13,
+    "tooltip": false,
+    //"unit": "",
+    "path": "/mnt/SSD_480G"
+  },
+
+  "temperature": {
+    "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input", //TODO
+    //"hwmon-path-abs": "",
+    //"input-filename": "",
+    "critical-threshold": 80,
+    "format": "{icon} {temperatureC}°C",
+    "format-icons": ["", "", ""],
+    "tooltip": false
+  },
+ 
+  "pulseaudio": {
+    "scroll-step": 1,
+    "tooltip": false,
+    "format": "{icon} {volume}%",
+    "format-bluetooth": "{volume}% {icon}",
+    "format-muted": " ",
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": ["🔈", "🔊"]
+    },
+    "on-click": "pavucontrol"
+  },
+
+  "wireplumber": {
+    "scroll-step": 1,
+    "max-volume": 100,
+    "tooltip": false,
+    "format": "{icon} {volume}%",
+    "format-muted": " ",
+    "format-icons": ["🔈", "🔊"],
+    "on-click": "pavucontrol",
+    "on-click-right": "helvum"
+  },
+
+// ++++++++ Not castomized ++++++++++
+  //TODO: Разобраться и настроить
+  /*
+  "mpd": {
+    "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
+    "format-disconnected": "Disconnected ",
+    "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
+    "unknown-tag": "N/A",
+    "interval": 5,
+    "consume-icons": {
+      "on": " "
+    },
+    "random-icons": {
+      "off": "<span color=\"#f53c3c\"></span> ",
+      "on": " "
+    },
+    "repeat-icons": {
+      "on": " "
+    },
+    "single-icons": {
+      "on": "1 "
+    },
+    "state-icons": {
+      "paused": "",
+      "playing": ""
+    },
+    "tooltip-format": "MPD (connected)",
+    "tooltip-format-disconnected": "MPD (disconnected)"
+  },
+  */
+
+  // wiki: github.com/Alexays/Waybar/wiki/Module:-Backlight-Slider
+  /*
+  //TODO: Настроить
+  "backlight": {
+    //"device": "acpi_video1",
+    "format": "{percent}% {icon}",
+    "format-icons": ["", "", "", "", "", "", "", "", ""]
+  },
+  "backlight/slider": {
+    //"device": "intel_backlight",
+    "min": 0,
+    "max": 100,
+    "orientation": "horizontal"
+  },
+  */
+  
+  /* 
+  //TODO: Настроить
+  "battery": {
+    "states": {
+      // "good": 95,
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{capacity}% {icon}",
+    "format-full": "{capacity}% {icon}",
+    "format-charging": "{capacity}% ",
+    "format-plugged": "{capacity}% ",
+    "format-alt": "{time} {icon}",
+    // "format-good": "", // An empty format will hide the module
+    // "format-full": "",
+    "format-icons": ["", "", "", "", ""]
+  },
+  */
+  
+  /*
+  //TODO: Настроить
+  "power-profiles-daemon": {
+    "format": "{icon}",
+    "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+    "tooltip": true,
+    "format-icons": {
+      "default": "",
+      "performance": "",
+      "balanced": "",
+      "power-saver": ""
+    }
+  },
+  */
+
+// ++++++++ DM: Hyprland +++++++++
+  //TODO: Настроить
+  "hyprland/submap": {
+    "format": "(~˘▽˘)~ {}",
+    "max-length": 8,
+    "tooltip": false
+    //"always-on": false
+  },
+
+  "hyprland/window": {
+    "separate-outputs": false,
+    "format": "{}",
+    "rewrite": {
+      "": "<span color='#0FAFFF'>(-.-#)</span> Zzz..",
+      "(\\d\\. )?(.*) - Chromium": "<span color='#4285F4'></span>  $2",
+      "(\\d\\. )?(.*) - Google Chrome": "<span color='#FFBF00'></span>  $2",
+      "(\\d\\. )?(.*) — Mozilla Firefox": "<span color='#FF4433'></span>  $2",
+      "Mozilla Firefox": "<span color='#FF4433'></span>",
+      "nvim (.*)": "<span color='#57A143'></span>  $1",
+      "nvim": "<span color='#57A143'>  Neovim</span> ",
+      "ranger(.*)": "<span color='#ffffff'>🖿</span>  $1",
+      "Search(.*)": "<span color='#a855f7'></span>  Search$1"
+    }
+  },
+
+  "hyprland/language": {
+    //TODO: Добавить смену по клику
+    "format": "{}",
+    "format-en": "en",
+    "format-ru": "ru"
+  },
+
+  "hyprland/workspaces": {
+    "active-only": false,
+    "all-outputs": false,
+    "show-special": false,
+    "special-visible-only": false,
+    "sort-by": "number", // default|id|name|number
+    "move-to-monitor": true,
+    "disable-scroll": false,
+	  "on-click": "activate",
+    "on-scroll-up": "hyprctl dispatch workspace e-1",
+    "on-scroll-down": "hyprctl dispatch workspace e+1",
+    /* //FIXME: Починить
+    "format-window-separator": "\n",
+    "window-rewrite-default": "",
+    "window-rewrite": {
+      "title<.*youtube.*>": "", // Windows whose titles contain "youtube"
+      "class<firefox>": "", // Windows whose classes are "firefox"
+      "class<firefox> title<.*github.*>": "" // Windows whose class is "firefox" and title contains "github". Note that "class" always comes first.
+    },*/
+    /*"persistent-workspaces": {
+      "HDMI-A-1": 1, //
+      "*": [2,3]
+    },*/
+    "format": "{icon}",
+    "format-icons": {
+      /*"-99": "",
+      "0": "",
+      "1": "",
+      "2": "",
+      "3": "",*/ 
+      "active": "",
+      "default": "",
+      //"empty": "+-+",
+      //"persistent": "T-T",
+      //"special": "-_-",
+      "urgent": ""
+    }
+    //"ignore-workspaces": [],
+  }
+}

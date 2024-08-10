@@ -1,125 +1,64 @@
-{
-  "layer": "top",
-  "position": "top",
-  "margin-bottom": 0,
+// wiki: github.com/Alexays/Waybar/wiki/Configuration
+[{
+  // This section for main monitor
+  "output": "HDMI-A-1", // TODO. Set a montor (params is not needed)
+
+  "include": [
+    "~/.config/waybar/new/modules/default.jsonc",
+    "~/.config/waybar/new/modules/custom.jsonc",
+    "~/.config/waybar/new/modules/group.jsonc"
+  ],
+
+  // ====== General =======
+  //"mode": "dock",
+  "layer": "top", // Bar at top layer
+  "position": "top", // top|bottom|left|right
+  //"name": "main", // Init CSS class
+  //"spacing": 0, // Gaps between modules 
+  "margin": "3px 8% 0px 8%", // In CSS style
+  "reload_style_on_change": true,
+  
   "modules-left": [
     "clock",
     "hyprland/workspaces",
+    "hyprland/submap",
+    //"mpris", // FIXME Постоянно падает
     "tray"
   ],
+  //"fixed-center": true,
   "modules-center": [
     "hyprland/window"
   ],
   "modules-right": [
+    "keyboard-state#caps",
+    "systemd-failed-units",
+    "gamemode",
     "hyprland/language",
+    //"idle_inhibitor",
+    "network#vpn",
     "network",
-    "temperature",
-    "memory",
-    "cpu",
-    "pulseaudio",
+    "group/hardware",
+    //"temperature",
+    //"backlight",
+    //"backlight/slider",
+    //"battery",
+    //"pulseaudio",
+    "wireplumber",
+    //pulseaudio/slider,
     "custom/powermenu"
-  ],
-  "tray": {
-    "icon-size": 20,
-    "spacing": 10
-  },
-  "hyprland/window": {
-    "format": "{}",
-    "rewrite": {
-      "": "<span color='#0FAFFF'>(-.-#)</span> Zzz..",
-      "(\\d\\. )?(.*) - Chromium": "<span color='#4285F4'></span>  $2",
-      "(\\d\\. )?(.*) - Google Chrome": "<span color='#FFBF00'></span>  $2",
-      "(\\d\\. )?(.*) — Mozilla Firefox": "<span color='#FF4433'></span>  $2",
-      "Mozilla Firefox": "<span color='#FF4433'></span>",
-      "nvim (.*)": "<span color='#57A143'></span>  $1",
-      "nvim": "<span color='#57A143'>  Neovim</span> ",
-      "ranger(.*)": "<span color='#ffffff'>🖿</span>  $1",
-      "Search(.*)": "<span color='#a855f7'></span>  Search$1"
-    },
-    "separate-outputs": false
-  },
-  "hyprland/submap": {
-    "format": "✌️ {}",
-    "max-length": 8,
-    "tooltip": true
-  },
-  "hyprland/workspaces": {
-    "active-only": false,
-    "all-outputs": true,
-    "disable-scroll": false,
-    "on-scroll-up": "hyprctl dispatch workspace e-1",
-    "on-scroll-down": "hyprctl dispatch workspace e+1",
-	  "on-click": "activate",
-    "sort-by-number": true,
-    "format": "{icon}",
-    "format-icons": {
-      "1": "•",
-      "2": "•",
-      "3": "•",
-      "4": "•",
-      "5": "•",
-      "6": "•",
-      "7": "•",
-      "8": "•",
-      "9": "•",
-      "10": "•",
-      "-99": "•",
-      "active": "○",
-      "default": "•",
-      "urgent": ""
-    }
-  },
-  "hyprland/language": {
-    "format": "{}",
-    "format-en": "en",
-    "format-ru": "ru",
-  },
-  "network": {
-    "interface": "enp4s0",
-    "format": "{ipaddr}",
-    "tooltip-format-ethernet": "{ifname} ",
-    "interval": 2,
-  },
-  "temperature": {
-    "format": "{icon} {temperatureC}°C",
-    "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-    "critical-threshold": 80,
-    "format-icons": ["", "", ""]
-  },
-  "memory": {
-    "format": " {}%",
-    "tooltip": false
-  },
-  "cpu": {
-    "format": " {usage}%",
-    "tooltip": false
-  },
-  "custom/powermenu": {
-    "format": "⏻",
-    "tooltip": false,
-    "on-click": "exec wlogout -p layer-shell"
-  },
-  "pulseaudio": {
-    "format": "{icon} {volume}%",
-    "format-bluetooth": "{volume}% {icon}",
-    "format-muted": " ",
-    "format-icons": {
-      "headphone": "",
-      "hands-free": "",
-      "headset": "",
-      "phone": "",
-      "portable": "",
-      "car": "",
-      "default": ["🔈", "🔊"]
-    },
-    "scroll-step": 1,
-    "on-click": "pavucontrol"
-  },
-  "clock": {
-    "format": "{:%H:%M}",
-    "interval": 60,
-    "tooltip": true,
-    "tooltip-format": "{:%d %B %Y}"
-  }
-}
+  ]
+}, {
+  // This section for another monitors
+  "output": "!HDMI-A-1", //TODO
 
+  "position": "top",
+  "include": [
+    "~/.config/waybar/new/modules/default.jsonc"
+  ],
+  "modules-left": [
+    "hyprland/workspaces"
+  ],
+  "modules-center": [
+    "hyprland/window"
+  ]
+}]

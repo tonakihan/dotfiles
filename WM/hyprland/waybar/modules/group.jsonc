@@ -1,0 +1,24 @@
+{
+  "group/disk": {
+    "orientation": "inherit",
+    "modules": [
+      "disk#root",
+      "disk#two"
+    ],
+  },
+  
+  "group/hardware": {
+    "orientation": "inherit",
+    "modules": [
+      "temperature",
+      "memory",
+      "group/disk",
+      "cpu",
+    ],
+    "drawer": {
+      "transition-duration": 500,
+      "transition-left-to-right": false,
+      //"children-class": "" // Is name of CSS class
+    }
+  },
+}
