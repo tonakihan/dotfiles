@@ -4,9 +4,9 @@
   "output": "HDMI-A-1", // TODO. Set a montor (params is not needed)
 
   "include": [
-    "~/.config/waybar/new/modules/default.jsonc",
-    "~/.config/waybar/new/modules/custom.jsonc",
-    "~/.config/waybar/new/modules/group.jsonc"
+    "~/.config/waybar/modules/default.jsonc",
+    "~/.config/waybar/modules/custom.jsonc",
+    "~/.config/waybar/modules/group.jsonc"
   ],
 
   // ====== General =======
@@ -53,7 +53,7 @@
 
   "position": "top",
   "include": [
-    "~/.config/waybar/new/modules/default.jsonc"
+    "~/.config/waybar/modules/default.jsonc"
   ],
   "modules-left": [
     "hyprland/workspaces"
