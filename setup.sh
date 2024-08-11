@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 # TODO: Add install scripts
+# TODO: Add install icons
 
 # FIX CS2199
 if [[ $1 == "--help" ]]; then
@@ -22,6 +23,7 @@ EOF
 fi
 
 installWM() { 
+    echo "Installing WM config..."
     if [[ $1 == "" ]]; then
         echo "ERR: installWM(): not found \$1" >&2
         exit 1
@@ -34,6 +36,7 @@ installWM() {
 }
 
 installShared() { 
+    echo "Installing Shared config..."
     for file in "$PWD/Shared config/"*; do
         file=$( basename "$file" )
         cp -fr "$PWD/Shared config/$file" "$XDG_CONFIG_HOME/$file"
@@ -71,6 +74,13 @@ saveCrrConfig() {
 }
 
 clearConfigDir() {
+    if [[ ! -d "${XDG_CONFIG_HOME}" ]]; then
+        echo "Not found config dir. Creaiting..."
+        mkdir "$XDG_CONFIG_HOME" && \
+        echo "Success"
+        return
+    fi
+    
     cat << EOF
 
     Select method installation:
