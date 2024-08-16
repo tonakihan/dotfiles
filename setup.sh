@@ -149,9 +149,10 @@ EOF
     esac
     case $uSelectWM in
         1 ) #Hyprland
-            checkDependencies waybar wofi wlogout hyprpaper grim slurp alacritty swaylock 
+            checkDependencies Hyprland waybar wofi wlogout hyprpaper grim slurp alacritty hyprlock 
             installWM hyprland;;
         2 ) #i3wm
+            checkDependencies xclip i3 polybar rofi
             installWM i3wm;;
     esac
 }

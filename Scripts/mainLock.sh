@@ -12,32 +12,34 @@
 #    your session in getPathScriptDM)
 
 
+arrAppLockscreen=(hyprlock swaylock waylock i3lock)
+
 # -------- *Main settings* --------
-function getPathScriptDM() {
+function getCmdExecForDM() {
     if [[ "${XDG_CURRENT_DESKTOP}" -eq "Hyprland" ]]; then
-        SCRIPT=$XDG_CONFIG_HOME/hypr/scripts/lockScreen.sh
+        cmdExec="hyprlock"
 
     # For example:
     #elif [[ $XDG_CURRENT_DESKTOP -eq "Sway" ]]; then
-    #    SCRIPT=$XDG_CONFIG_HOME/sway/scripts/lockScreen.sh
+    #    cmdExec=$XDG_CONFIG_HOME/sway/scripts/lockScreen.sh
 
     else
-        echo "WARNING: Not found section for your"\
-            "DM in getPathScriptDM" >&2
+        echo "WARNING: Not found section for your "\
+            "DM in getCmdExecForDM" >&2
         return 
     fi
     echo "Success: Found scripts for DM"
 }
 
-function getEnvVarConf() {
+function getEnvVar() {
     if [[ -z "${XDG_CONFIG_HOME}" ]]; then
         if [[ -z "${HOME}" ]]; then
-            echo "FATAL ERROR: Not found"\
-                "environment variables \$HOME"\
+            echo "FATAL ERROR: Not found "\
+                "environment variables \$HOME "\
                 "or \$XDG_CONFIG_HOME" >&2
             exit 1
         fi
-        XDG_CONFIG_HOME=$HOME/.config
+        XDG_CONFIG_HOME="$HOME/.config"
     fi
     echo "Success: XDG_CONFIG_HOME=${XDG_CONFIG_HOME}"
 }
@@ -72,23 +74,22 @@ function runByDefault() {
 }
 
 function runLockScreen() { 
-    if [[ -n "${SCRIPT}" ]]; then
-        if ${SCRIPT}; then
+    if [[ -n "${cmdExec}" ]]; then
+        if "${cmdExec}" &disown; then
             echo "Success: Executed scripts lock screen"
             return
         fi
-        echo "ERROR: Can't runing your scripts $SCRIPT" >&2
+        echo "ERROR: Can't runing your lockscreen application/script: $cmdExec" >&2
         return 1
     fi
 
-    echo "ERROR: Not found your"\
-        "script for session lock. Execute by default" >&2
+    echo "ERROR: Not found your "\
+        "script/app for session lock. Execute by default" >&2
     runByDefault
 }
 
-# Change it if add app
 function checkRunningLock() {
-    for appLock in swaylock waylock i3lock; do
+    for appLock in $arrAppLockscreen[@] ; do
         if pgrep "$appLock" &> /dev/null; then
             echo "Info: Application lock screen is running"
             exit 0;
@@ -98,8 +99,8 @@ function checkRunningLock() {
 
 function main() {
     checkRunningLock
-    getEnvVarConf
-    getPathScriptDM
+    getEnvVar
+    getCmdExecForDM
     runLockScreen
 }
 
