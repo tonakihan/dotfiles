@@ -9,7 +9,7 @@ done
 
 echo "---" | tee -a /tmp/polybar_1.log
 # Запуск polybar с конфигом ~/.config/polybar/config
-polybar Bar1 2>&1 | tee -a /tmp/polybar_1.log &disown
+polybar Bar1 2>&1 | tee -a /tmp/polybar_1.log 
 
 echo "Polybar загрузился..."
 
