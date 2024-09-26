@@ -2,6 +2,5 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
-alias serve="browser-sync start --server --files ."
-
-set -g fish_greeting ""
+fish_add_path $fish_user_path
+set -gx EDITOR helix
