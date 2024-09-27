@@ -6,92 +6,101 @@
 # -----------------------------------------------
 #
 # For normal works needed environment variable:
-#  $XDG_CONFIG_HOME or $HOME
 #  $XDG_CURRENT_DESKTOP
 #  $XDG_SESSION_TYPE (if don't have scripts for
 #    your session in getPathScriptDM)
+#
+# Also may be needed $XDG_CONFIG_HOME for available
+# your configuration files 
 
 
 arrAppLockscreen=(hyprlock swaylock waylock i3lock)
 
 # -------- *Main settings* --------
 function getCmdExecForDM() {
-    if [[ "${XDG_CURRENT_DESKTOP}" -eq "Hyprland" ]]; then
-        cmdExec="hyprlock"
+    case $XDG_CURRENT_DESKTOP in
 
-    # For example:
-    #elif [[ $XDG_CURRENT_DESKTOP -eq "Sway" ]]; then
-    #    cmdExec=$XDG_CONFIG_HOME/sway/scripts/lockScreen.sh
+        "Hyprland")
+            cmdExec="hyprlock";;
 
-    else
-        echo "WARNING: Not found section for your "\
-            "DM in getCmdExecForDM" >&2
-        return 
-    fi
-    echo "Success: Found scripts for DM"
-}
+        # For example:
+        #"Sway")
+        #    cmdExec="$XDG_CONFIG_HOME/sway/scripts/lockScreen.sh";;
 
-function getEnvVar() {
-    if [[ -z "${XDG_CONFIG_HOME}" ]]; then
-        if [[ -z "${HOME}" ]]; then
-            echo "FATAL ERROR: Not found "\
-                "environment variables \$HOME "\
-                "or \$XDG_CONFIG_HOME" >&2
-            exit 1
-        fi
-        XDG_CONFIG_HOME="$HOME/.config"
-    fi
-    echo "Success: XDG_CONFIG_HOME=${XDG_CONFIG_HOME}"
+        "*")
+            echo "WARNING: Not found section for your "\
+                "DM in getCmdExecForDM" >&2
+            return ;;
+    esac 
+    echo "Success: Found section for your DM"
 }
 
 function runByDefault() {
-    if [[ "${XDG_SESSION_TYPE}" -eq "wayland" ]]; then
-        if hash swaylock &> /dev/null; then
-            swaylock -f 
-        elif hash waylock &> /dev/null; then
-            waylock
+    local arrCmdExecByDefault=()
+    case $XDG_SESSION_TYPE in
+        
+        "wayland")
+            arrCmdExecByDefault=(swaylock hyprlock waylock);;
 
-        else
-            echo "FATAL ERROR: Not found lock"\
-                "sreen application on this computer" >&2
-            exit 1
-        fi
-    elif [[ "${XDG_SESSION_TYPE}" -eq "x11" ]]; then
-        if hash i3lock &> /dev/null; then
-            i3lock 
+        "x11")
+            arrCmdExecByDefault=(i3lock);;
+                  
+        "*")
+            echo "FATAL ERROR: Not found your session manager" >&2
+            exit 1;;
+    esac
 
-        else
+    if [[ ${#arrCmdExecByDefault[@]} -eq 0 ]]; then
             echo "FATAL ERROR: Not found lock"\
-                "sreen application on this computer" >&2
+                "screen application on this system" >&2
             exit 1
-        fi
-    else
-        echo "FATAL ERROR: Not foundyour session manager" >&2
-        exit 1
     fi
-    echo "Success: Found and runing lock screen"\
-        "application"
+    for cmdExecByDefault in "${arrCmdExecByDefault[@]}"
+    do
+        runCmd $cmdExecByDefault &&
+        echo "Success: Found and runing lock screen"\
+            "application" && 
+        return
+    done
+}
+
+function runCmd() {
+    if ! hash $1 &>/dev/null; then return 1; fi
+    echo "Try launch $1"
+    $@ & &> /dev/null
+    sleep 1
+    local pidLockScreen=$!
+
+    if pgrep -f $1 &> /dev/null; then
+        echo "Success: Executed cmd"
+        return
+    fi
+        
+    if [ $? -eq 0 ] && ! kill -0 $pidLockScreen &> /dev/null; then
+        echo "Cmd success ended"
+    elif ! kill -0 $pidLockScreen &> /dev/null; then
+        echo "ERROR: Cmd not success ended" >&2
+    fi
+    echo "ERROR: Can't runing your cmd application/script: \"$@\"" >&2
+    return 1
 }
 
 function runLockScreen() { 
-    if [[ -n "${cmdExec}" ]]; then
-        if "${cmdExec}" &disown; then
-            echo "Success: Executed scripts lock screen"
-            return
-        fi
-        echo "ERROR: Can't runing your lockscreen application/script: $cmdExec" >&2
-        return 1
+    if [[ -n "$cmdExec" ]]; then
+        runCmd $cmdExec &&
+        echo "Success: LockScreen executed" &&
+        return
     fi
 
-    echo "ERROR: Not found your "\
-        "script/app for session lock. Execute by default" >&2
+    echo "ERROR: Not found your"\
+        "script/application for session lock. Execute by default" >&2
     runByDefault
 }
 
 function checkRunningLock() {
     for appLock in $arrAppLockscreen[@] ; do
         if pgrep "$appLock" &> /dev/null; then
-            echo "Info: Application lock screen is running"
+            echo "Info: Application lock screen is running ($appLock)"
             exit 0;
         fi
     done
@@ -99,11 +108,8 @@ function checkRunningLock() {
 
 function main() {
     checkRunningLock
-    getEnvVar
     getCmdExecForDM
     runLockScreen
 }
 
 main
-exit 0
-
