@@ -1,18 +1,22 @@
 #!/usr/bin/env bash
 
-if ! pgrep waybar; then
-    echo "---Launch---" | tee -a /tmp/waybar.log
-    waybar -l debug | tee -a /tmp/waybar.log &
-    sleep 2
-fi
-
 function runBin {
-    if ! pgrep $0; then
+    if not pidof $1 &> /dev/null; then
         $@ &
-        echo "$@"
+        echo "Running: $@"
+    else
+        killall -9 $1
+        sleep 1
+        runBin $@
     fi
 }
 
+function runBinWithLog {
+    echo "---Launch---" | tee -a "/tmp/$1.log"
+    runBin $@ | tee -a "/tmp/$1.log" &
+}
 
 runBin hyprpaper
-runBin corectrl --minimize-systray
+runBinWithLog waybar
+#runBin swayidle -C $HOME/.config/hypr/swayidle.conf
+sleep 2 && runBin corectrl --minimize-systray
