@@ -1,0 +1,9 @@
+// For vpnSwitch.sh
+
+polkit.addRule( function( action, subject ) {
+  if (action.id == "org.freedesktop.policykit.exec" && 
+      action.lookup("program") == "/usr/sbin/wg-quick" && 
+      subject.isInGroup("wheel")) {
+        return polkit.Result.YES;
+  }
+});
