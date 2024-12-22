@@ -102,7 +102,7 @@
     "interface": "enp4s0", // (Optional) TODO
     "family": "ipv4",
     //"format-wifi": " {essid} ({signalStrength}%)",
-    "format-ethernet": "",
+    "format-ethernet": "  ",
     "format-linked": " {ifname} (No IP)",
     "format-disconnected": "⚠ Disconnected",
     //"format-alt": "{ipaddr}"
@@ -110,7 +110,7 @@
     "tooltip-format": "{ipaddr}"
   },
   "network#vpn": {
-    "interface": "wg1", // TODO
+    "interface": "wg", // TODO
     "family": "ipv4",
     "format": "VPN",
     "format-disconnected": "<span color='#666666'>vpn</span>",
@@ -118,7 +118,7 @@
     "tooltip": true,
     "tooltip-format": "{ipaddr}",
     "tooltip-format-disconnected": "Is off",
-    "on-click": "~/.script/vpnSwitch.sh" // FIXME Add script
+    "on-click": "vpnSwitch.sh" // FIXME Add script
   },
 
   "cpu": {
@@ -129,13 +129,13 @@
   },
 
   "memory": {
-    "format": " {}%",
+    "format": " {}%",
     "tooltip": false
   },
 
   "disk#root": {
     "interval": 600,
-    "format": "🖴 /:{percentage_used}%",
+    "format": " /:{percentage_used}%",
     "max-length": 10,
     "tooltip": false,
     //"unit": "",
@@ -143,11 +143,11 @@
   },
   "disk#two": {
     "interval": 600,
-    "format": "🖴 SSD:{percentage_used}%",
+    "format": " SSD:{percentage_used}%",
     "max-length": 13,
     "tooltip": false,
     //"unit": "",
-    "path": "/mnt/SSD_480G"
+    "path": "/media/SSD480"
   },
 
   "temperature": {
@@ -155,7 +155,7 @@
     //"hwmon-path-abs": "",
     //"input-filename": "",
     "critical-threshold": 80,
-    "format": "{icon} {temperatureC}°C",
+    "format": "{icon} {temperatureC}°C",
     "format-icons": ["", "", ""],
     "tooltip": false
   },
@@ -165,15 +165,15 @@
     "tooltip": false,
     "format": "{icon} {volume}%",
     "format-bluetooth": "{volume}% {icon}",
-    "format-muted": " ",
+    "format-muted": "",
     "format-icons": {
-      "headphone": "",
+      "headphone": "",
       "hands-free": "",
       "headset": "",
       "phone": "",
       "portable": "",
       "car": "",
-      "default": ["🔈", "🔊"]
+      "default": ["", " "]
     },
     "on-click": "pavucontrol"
   },
@@ -183,8 +183,8 @@
     "max-volume": 100,
     "tooltip": false,
     "format": "{icon} {volume}%",
-    "format-muted": " ",
-    "format-icons": ["🔈", "🔊"],
+    "format-muted": " ",
+    "format-icons": ["", " "],
     "on-click": "pavucontrol",
     "on-click-right": "helvum"
   },

@@ -1,7 +1,22 @@
 {
-  "custom/powermenu": {
+  "custom/poweroff": {
     "format": "⏻",
     "tooltip": false,
-    "on-click": "exec wlogout -p layer-shell"
+    "on-click": "exec bash -c 'zenity --question --title=\"Powermenu\" --text=\"Shutdown now?\" && loginctl poweroff'"
+  },
+  "custom/reboot": {
+    "format": "",
+    "tooltip": false,
+    "on-click": "exec bash -c 'zenity --question --title=\"Powermenu\" --text=\"Reboot now?\" && loginctl reboot'"
+  },
+  "custom/logout": {
+    "format": "󰗽",
+    "tooltip": false,
+    "on-click": "exec loginctl kill-session self"
+  },
+  "custom/suspend": {
+    "format": "󰤄",
+    "tooltip": false,
+    "on-click": "exec loginctl suspend"
   }
 }

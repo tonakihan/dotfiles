@@ -1,4 +1,5 @@
 ## General
+[general]
 import = [
   "~/.config/alacritty/themes/custom.toml", 
   "~/.config/alacritty/p_key.toml"

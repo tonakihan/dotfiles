@@ -31,7 +31,7 @@
   ],
   "modules-right": [
     "keyboard-state#caps",
-    "systemd-failed-units",
+    //"systemd-failed-units",
     "gamemode",
     "hyprland/language",
     //"idle_inhibitor",
@@ -45,7 +45,7 @@
     //"pulseaudio",
     "wireplumber",
     //pulseaudio/slider,
-    "custom/powermenu"
+    "group/powermenu"
   ]
 }, {
   // This section for another monitors

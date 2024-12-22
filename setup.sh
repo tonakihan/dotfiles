@@ -149,9 +149,9 @@ EOF
     esac
     case $uSelectWM in
         1 ) #Hyprland
-            checkDependencies Hyprland waybar wofi wlogout hyprpaper grim \
-                slurp alacritty hyprlock swayidle brightnessctl hyprpicker \
-                wl-copy 
+            checkDependencies Hyprland waybar fuzzel swww grim slurp \
+                alacritty hyprlock swayidle brightnessctl hyprpicker \
+                wl-copy swaync loupe dex
                 
             installWM hyprland;;
         2 ) #i3wm

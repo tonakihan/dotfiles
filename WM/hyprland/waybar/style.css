@@ -45,9 +45,19 @@ window#waybar {
 #window {
   color: #929db1;
 }
-#custom-powermenu {
+#custom-poweroff {
   color: #e06c75;
 }
+#custom-suspend {
+  color: #1487fa;
+}
+#custom-logout {
+  color: #bbbbbb;
+}
+#custom-reboot {
+  color: #ecc30e;
+}
+
 #pulseaudio,
 #wireplumber {
   color: #0fb9b1;
@@ -82,7 +92,11 @@ FIXME: НЕ реализованно в GTK
 #workspaces button {
   margin-right: 0.4em; /*fix for symbols*/
 }
-#custom-powermenu{
+
+#custom-poweroff,
+#custom-suspend,
+#custom-logout,
+#custom-reboot{
   padding-right: 0.7em;
 }
 #window {
