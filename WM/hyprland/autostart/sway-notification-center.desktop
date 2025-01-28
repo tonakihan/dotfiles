@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Version=1.5
+Name=Sway Notification Center
+Exec=swaync
+Terminal=false

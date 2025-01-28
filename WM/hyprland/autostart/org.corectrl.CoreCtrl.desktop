@@ -2,7 +2,7 @@
 Name=CoreCtrl
 GenericName=Core control
 Comment=Control your computer with ease using application profiles
-Exec=corectrl --minimize-systray
+Exec=sh -c "sleep 1; corectrl --minimize-systray"
 Icon=corectrl
 StartupNotify=true
 StartupWMClass=corectrl

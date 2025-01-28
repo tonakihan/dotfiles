@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Version=1.5
+Name=udiskie
+Exec=udiskie
+Comment[ru]=Автомонтирование usb накопителей
+Terminal=false
