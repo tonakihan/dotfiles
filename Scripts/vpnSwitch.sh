@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 
+# |--------------------------|
+# | Supported only wireguard |
+# |--------------------------|
+
 # WARNING: Needed the Polkit and notify-send!
+# WARNING: Also add path to .local/bin into .profile
 # TODO: Add helps
 
 # FIXME: добавить env в setup и заменить на нужный интерфейс..

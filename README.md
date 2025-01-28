@@ -1,5 +1,5 @@
 # dotfiles
-<p align="center"><img width=70% src="screenshots/hypr.png" /></p>
+<p align="center"><img width=70% src="example/hypr.png" /></p>
 
 ## Installation
 ``` bash
@@ -8,3 +8,7 @@ cd dotfiles
 chmod 755 setup.sh
 ./setup.sh
 ```
+
+## Подробнее
+
+[Hyprland](https://gitgub.com/tonakihan/dotfiles/blob/main/guide/Hyprland.md)
