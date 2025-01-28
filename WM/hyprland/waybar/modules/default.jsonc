@@ -99,7 +99,7 @@
   },
 
   "network": {
-    "interface": "enp4s0", // (Optional) TODO
+    "interface": "eth0", // (Optional) TODO
     "family": "ipv4",
     //"format-wifi": " {essid} ({signalStrength}%)",
     "format-ethernet": "  ",
@@ -118,7 +118,7 @@
     "tooltip": true,
     "tooltip-format": "{ipaddr}",
     "tooltip-format-disconnected": "Is off",
-    "on-click": "vpnSwitch.sh" // FIXME Add script
+    "on-click": "vpnSwitch.sh" // FIXME (bash path)
   },
 
   "cpu": {

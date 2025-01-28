@@ -1,7 +1,6 @@
 * {
   font-family: Roboto Mono;
   font-size: 13.5px;
-  color: #FFFFFF;
   min-height: 0;
   padding: 0;
   margin: 0;
@@ -35,10 +34,13 @@ window#waybar {
 /*invisable modules (disable background)*/
 #keyboard-state.caps,
 #tray {
-   background-color: rgba(0,0,0,0);
+  background-color: rgba(0,0,0,0);
 }
 
 /*color font modules*/
+.module > label, #workspaces *, #hardware * {
+  color: #ffffff;
+}
 #language {
   color: #56f595;
 }
@@ -101,4 +103,9 @@ FIXME: НЕ реализованно в GTK
 }
 #window {
   min-width: 0.9em;
+}
+
+#tray menu {
+  background-color: #ffffff;
+  border-radius: 12px;
 }

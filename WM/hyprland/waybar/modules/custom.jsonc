@@ -12,7 +12,7 @@
   "custom/logout": {
     "format": "󰗽",
     "tooltip": false,
-    "on-click": "exec loginctl kill-session self"
+    "on-click": "exec dbus-send --system --print-reply --dest=org.freedesktop.login1 /org/freedesktop/login1 org.freedesktop.login1.Manager.KillSession string:$XDG_SESSION_ID string:\"leader\" int32:9"
   },
   "custom/suspend": {
     "format": "󰤄",
