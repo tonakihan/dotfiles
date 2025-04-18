@@ -1,0 +1,58 @@
+#!/bin/sh
+
+## TODO: Адаптировать под вызов без fuzzel
+
+# Global var
+appName=$(basename $0)
+
+if [[ ! -z "$@" ]]; then
+    action=$1
+
+else
+    # Exec dmenu (fuzzel)
+    input=$(echo -e "\
+⏻  Shutdown
+  Reboot
+󰤄  Sleep 
+⭘  Hibernate 
+󰗽  Logout" |
+        fuzzel --dmenu --prompt='' --placeholder='Set action' -l5)
+
+    # Exec power-action
+    if [[ -n input ]]; then
+        action=$(echo $input | awk '{print $2}')
+    fi
+fi
+
+
+case $action in
+    [Ss]hutdown)
+        zenity --question --title="$appName" --text="Shutdown now?" &&
+            loginctl poweroff
+        ;;
+    [Rr]eboot)
+        zenity --question --title="$appName" --text="Reboot now?" &&
+            loginctl reboot
+        ;;
+    [Ss]leep)
+        loginctl suspend
+        ;;
+    [Hh]ibernate)
+        notify-send $appName "Not have a release for hibernate"
+        sleep 1
+        ;;
+    [Ll]ogout)
+        dbus-send  --system --print-reply \
+          --dest=org.freedesktop.login1   \
+          /org/freedesktop/login1         \
+          org.freedesktop.login1.Manager.KillSession \
+          string:$XDG_SESSION_ID string:"leader" int32:9
+        ;;
+    *)
+        if [[ -z "$@" ]]; then
+            exit
+        fi
+    
+        echo "Error. Not found arguments '$@'" >& 2
+        exit 1
+esac

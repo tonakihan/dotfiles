@@ -52,6 +52,7 @@ mesa-utils lib32-mesa opencl-mesa gamemode vulkan-tools vulkan-mesa-layers lib32
 
 `7zip` - Архиватор. Может распоковать почти любой формат архива и упаковать.  
 `refind` - Аналог `grub`, но более упрощенный и быстрый.
+`dutree` - Наглядный анализ свободного места на диске.
 
 ## 2. Что стоит настроить
 <details>

@@ -1,41 +1,11 @@
 [Added Associations]
-application/vnd.sqlite3=sqlitebrowser.desktop;
-application/x-ms-dos-executable=portproton.desktop;
-application/xml=google-chrome.desktop;
-image/x-xcursor=nvim.desktop;
-inode/directory=spacefm.desktop;
-model/3mf=PrusaSlicer.desktop;
-model/stl=PrusaSlicer.desktop;
-text/plain=nvim.desktop;
-text/x.gcode=PrusaGcodeviewer.desktop;
 
 [Default Applications]
 application/pdf=firefox.desktop;
-application/toml=nvim.desktop;
-application/vnd.microsoft.portable-executable=portproton.desktop;
-application/vnd.sqlite3=sqlitebrowser.desktop;
-application/x-ms-dos-executable=portproton.desktop;
-application/x-msdownload=portproton.desktop;
 application/x-www-browser=firefox.desktop;
-application/x-zerosize=nvim.desktop;
-application/xml=google-chrome.desktop;
-image/jpeg=com.interversehq.qView.desktop;
-image/png=com.interversehq.qView.desktop;
-image/vnd.microsoft.icon=com.interversehq.qView.desktop;
-image/x-xcursor=nvim.desktop;
-inode/directory=spacefm.desktop;
-inode/x-empty=nvim.desktop;
-model/3mf=PrusaSlicer.desktop;
-model/stl=PrusaSlicer.desktop;
-text/css=nvim.desktop;
-text/html=nvim.desktop;
-text/javascript=nvim.desktop;
-text/markdown=nvim.desktop;
-text/plain=nvim.desktop;
-text/x-log=nvim.desktop;
-text/x-script.python=nvim.desktop;
-text/x.gcode=PrusaGcodeviewer.desktop;
-text/xml=nvim.desktop;
+image/jpeg=org.gnome.Loupe.desktop;
+image/png=org.gnome.Loupe.desktop;
+video/x-matroska=vlc.desktop;
 x-scheme-handler/http=firefox.desktop;
 x-scheme-handler/https=firefox.desktop;
 x-scheme-handler/terminal=Alacritty.desktop;

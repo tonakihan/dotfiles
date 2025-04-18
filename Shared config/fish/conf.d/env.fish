@@ -3,4 +3,9 @@ if status is-interactive
 end
 
 fish_add_path $fish_user_path
-set -gx EDITOR helix
+
+if which helix &>/dev/null
+    set -gx EDITOR helix
+else if which hx &>/dev/null
+    set -gx EDITOR hx
+end
