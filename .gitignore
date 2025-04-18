@@ -1,6 +1,7 @@
 /themes/*
 /icons/*
 !/icons/default
+
 /Shared config/*
 !/Shared config/alacritty
 /Shared config/alacritty/themes/ayu_light.yaml
@@ -9,11 +10,13 @@
 !/Shared config/dunst
 !/Shared config/fish
 /Shared config/fish/fish_variables
-!/Shared config/flameshot
 !/Shared config/handlr
 !/Shared config/neofetch
 !/Shared config/nvim
 !/Shared config/mimeapps.list
-/Shared config/pipewire
-/Shared config/wireplumber
-/WM/hyprland/hypr/hyprpaper.conf
+!/Shared config/MangoHud
+!/Shared config/kitty
+!/Shared config/{MangoHud,eww,helix}
+
+dev/untrackedFiles.fish
+

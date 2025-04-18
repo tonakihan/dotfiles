@@ -38,7 +38,9 @@ window#waybar {
 }
 
 /*color font modules*/
-.module > label, #workspaces *, #hardware * {
+.module > label,
+#workspaces *,
+#hardware * {
   color: #ffffff;
 }
 #language {
@@ -103,6 +105,9 @@ FIXME: НЕ реализованно в GTK
 }
 #window {
   min-width: 0.9em;
+}
+#language { /* Fix - if overflow bar */
+  min-width: 1.2em;
 }
 
 #tray menu {

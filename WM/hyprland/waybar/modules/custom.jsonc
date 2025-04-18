@@ -2,21 +2,21 @@
   "custom/poweroff": {
     "format": "⏻",
     "tooltip": false,
-    "on-click": "exec bash -c 'zenity --question --title=\"Powermenu\" --text=\"Shutdown now?\" && loginctl poweroff'"
+    "on-click": "exec ~/.local/bin/PowerMenu shutdown" 
   },
   "custom/reboot": {
     "format": "",
     "tooltip": false,
-    "on-click": "exec bash -c 'zenity --question --title=\"Powermenu\" --text=\"Reboot now?\" && loginctl reboot'"
+    "on-click": "exec ~/.local/bin/PowerMenu reboot" 
   },
   "custom/logout": {
     "format": "󰗽",
     "tooltip": false,
-    "on-click": "exec dbus-send --system --print-reply --dest=org.freedesktop.login1 /org/freedesktop/login1 org.freedesktop.login1.Manager.KillSession string:$XDG_SESSION_ID string:\"leader\" int32:9"
+    "on-click": "exec ~/.local/bin/PowerMenu logout" 
   },
   "custom/suspend": {
     "format": "󰤄",
     "tooltip": false,
-    "on-click": "exec loginctl suspend"
+    "on-click": "exec ~/.local/bin/PowerMenu sleep" 
   }
 }
