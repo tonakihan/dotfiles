@@ -1,0 +1,25 @@
+; Получить основной микрофон и колонки
+; Добваить возможность отключения микрофона
+
+; onclicl mute
+
+(defpoll volume_precent :initial "0" :interval "2s" "wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print $2 * 100}'")
+
+(defwidget volume []
+  (eventbox
+     :class "volume"
+     :onscroll "bash -c 'if test {} = \"up\"; then wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%+; else wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-; fi'"
+;    (scale
+;       :value volume_percent
+;			  :orientation "h"
+;			  :tooltip "${volume_percent}%"
+;			  :max 100
+;			  :min 0
+;			  :onchange "notify-send change")
+      (circular-progress :value volume_precent
+                         :thickness 9
+        (label :text "vol"
+               :limit-width 2
+               :show-truncated false
+               :wrap false
+               :angle 0.0) )))

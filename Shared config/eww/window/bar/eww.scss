@@ -1,0 +1,49 @@
+.bar {
+  /*background: linear-gradient(
+                  to right,
+                  rgba(30,30,30, 0),
+                  #492aba 30%, #492aba 70%,
+                  rgba(30,30,30, 0) );*/
+  background: linear-gradient(
+    to top,
+    #492aba,
+    rgb(0,0,0,0)
+  );
+  padding: 0 12px;
+  font-family: "Roboto Mono";
+
+  > * { /* left center right */
+ /*   background: rgba(27,206,209, 0.4);*/
+    background: linear-gradient(
+      to bottom,
+      rgba(53,56,63, 0.8),
+      rgba(0,0,0,0.2)
+    );
+    color: white;
+    border-radius: 8px;
+    padding: 0 10px;
+  }
+  
+  .left > :first-child,
+  .right > :first-child {
+    padding-right: 10px;
+  }
+}
+
+.workspaces {
+    .empty { color: #1b73d1;}
+    .occupied {color: #412bd1;}
+    .current {color: #1bd179;}
+}
+
+button {
+  background: inherit;
+  border: inherit;
+  box-shadow: inherit;
+  text-shadow: inherit;
+  padding: 0px
+}
+
+.power-menu label {
+  color: #d6322c;
+}

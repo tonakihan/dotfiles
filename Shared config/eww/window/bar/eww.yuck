@@ -1,0 +1,59 @@
+(include "../../modules/datetime.yuck");
+(include "../../modules/hyprland/workspaces/main.yuck");
+(include "../../modules/hyprland/window-title/main.yuck");
+(include "../../modules/power-menu.yuck");
+(include "../../modules/wireplumber.yuck"); Provide volume
+
+
+(defwindow bar
+    :monitor 0
+    :geometry (geometry :width "1920px"
+                        :height "25px"
+                        :anchor "bottom center")
+    :stacking "fg"
+    :exclusive true ;Резервирование места от WM
+    :namespace "bar"
+    :focusable false
+    (main-containter)
+)
+
+(defwidget main-containter []
+    (box
+        (left)
+        (center)
+        (right)
+))
+
+
+
+; Common settings of bar.
+(defvar isSpaceEvenly false)
+
+; Start of bar
+(defwidget left []
+    (box :class "left"
+         :orientation "horizontal"
+         :halign "start"
+         :space-evenly isSpaceEvenly
+        (datetime)
+        (workspaces)
+))
+
+; Center of bar
+(defwidget center []
+    (box :class "center"
+         :orientation "horizontal"
+         :halign "center"
+         :space-evenly isSpaceEvenly
+        (window-title)
+))
+
+; End of bar
+(defwidget right []
+    (box :class "right"
+         :orientation "horizontal"
+         :halign "end"
+         :space-evenly isSpaceEvenly
+        (volume)
+        (power-menu)
+))
