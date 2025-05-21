@@ -1,0 +1,19 @@
+(defpoll wg-vpn-status
+            :initial "down"
+            :interval "60s"
+           "vpnSwitch.sh get state wg")
+
+(defwidget wg-vpn-toggle []
+   (box
+      :class "vpn-toggle"
+      (button
+         :onclick "
+           vpnSwitch.sh;
+           sleep 0.3;
+           eww -c=$EWW_CONFIG_HOME poll wg-vpn-status
+         "
+         :timeout "1s"
+        (label
+           :text {wg-vpn-status == "up" ? "VPN" : "vpn"}
+           :class wg-vpn-status )
+        )))

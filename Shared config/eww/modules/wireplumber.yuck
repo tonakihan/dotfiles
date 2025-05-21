@@ -1,25 +1,32 @@
-; Получить основной микрофон и колонки
-; Добваить возможность отключения микрофона
+; TODO Добваить возможность отключения микрофона
 
-; onclicl mute
-
-(defpoll volume_precent :initial "0" :interval "2s" "wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print $2 * 100}'")
+(defpoll volume_precent
+          :initial "0"
+          :interval "3s"
+        "wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print $2 * 100}'")
+(defpoll volume_muted
+          :initial ""
+          :interval "5s"
+        "wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print $3}'")
 
 (defwidget volume []
-  (eventbox
+  (box ; Oсобенность. Для css padding-right всех модулей
      :class "volume"
-     :onscroll "bash -c 'if test {} = \"up\"; then wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%+; else wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-; fi'"
-;    (scale
-;       :value volume_percent
-;			  :orientation "h"
-;			  :tooltip "${volume_percent}%"
-;			  :max 100
-;			  :min 0
-;			  :onchange "notify-send change")
-      (circular-progress :value volume_precent
-                         :thickness 9
-        (label :text "vol"
-               :limit-width 2
-               :show-truncated false
-               :wrap false
-               :angle 0.0) )))
+     :tooltip "Volume ${volume_precent}"
+  ;circle mode
+  (eventbox
+     :onscroll "if test {} = 'up';
+        then wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%+;
+        else wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-;
+      fi
+      eww -c=$EWW_CONFIG_HOME poll volume_precent;
+      "
+     :onclick "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle;
+               eww -c=$EWW_CONFIG_HOME poll volume_muted"
+    (circular-progress
+       :value volume_precent
+       :thickness 3
+       :class {volume_muted == "[MUTED]" ? "mute" : ""}
+      (label ; Особенность. Нужен для css font-size И вырезания центра (перекрытия).
+        :text "⬤"
+        :limit-width 2) ))))

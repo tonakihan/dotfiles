@@ -1,22 +1,21 @@
-/themes/*
+/themes
 /icons/*
 !/icons/default
 
-/Shared config/*
-!/Shared config/alacritty
-/Shared config/alacritty/themes/ayu_light.yaml
-/Shared config/alacritty/themes/city_lights.yaml
-/Shared config/alacritty/themes/monokai_pro.yaml
-!/Shared config/dunst
-!/Shared config/fish
-/Shared config/fish/fish_variables
-!/Shared config/handlr
-!/Shared config/neofetch
-!/Shared config/nvim
-!/Shared config/mimeapps.list
-!/Shared config/MangoHud
-!/Shared config/kitty
-!/Shared config/{MangoHud,eww,helix}
+/Shared\ config/*
+!/Shared\ config/alacritty
+!/Shared\ config/dunst
+!/Shared\ config/eww
+/Shared\ config/eww/github
+!/Shared\ config/fish
+/Shared\ config/fish/fish_variables
+!/Shared\ config/handlr
+!/Shared\ config/helix
+!/Shared\ config/kitty
+!/Shared\ config/MangoHud
+!/Shared\ config/mimeapps.list
+!/Shared\ config/neofetch
+!/Shared\ config/nvim
 
 dev/untrackedFiles.fish
 

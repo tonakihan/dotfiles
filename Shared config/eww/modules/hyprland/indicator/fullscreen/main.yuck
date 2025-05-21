@@ -1,0 +1,10 @@
+(deflisten fullscreen_state
+    :initial "0"
+    "$EWW_CONFIG_ROOT/modules/hyprland/indicator/fullscreen/fullscreen-state.sh");
+
+(defwidget fullscreen [?class]
+    (box
+        :class "fullscreen-state ${fullscreen_state > 0 ? "active" : "hide"} ${class}"
+       (label
+            :text {fullscreen_state > 0 ? "Fullscreen" : ""})
+))

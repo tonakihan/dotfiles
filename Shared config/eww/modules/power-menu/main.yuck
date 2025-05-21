@@ -1,0 +1,18 @@
+;TODO Сделать динамическим - что бы выезжало при наведении
+
+(defwidget power-menu []
+  (box
+     :class "power-menu"
+    (button
+       :onclick "PowerMenu"
+       :timeout "1h"
+       ;:css "* {padding: 0}"
+      ; Color may be changed on https://onlinetools.com/image/replace-image-color
+      (image
+         :path "${get_env('EWW_CONFIG_ROOT')}/modules/power-menu/icon.png"
+         :image-width {G_iconSize + 3})
+      ;(label :text "⏻"
+      ;       :css "* {padding-right: 0.25em}")
+)))
+
+

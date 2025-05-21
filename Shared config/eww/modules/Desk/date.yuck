@@ -1,0 +1,9 @@
+(defwidget date []
+  (box :class "date"
+       :space-evenly false
+
+    (label :class "day ${formattime(EWW_TIME, "%u") >= 6 ? 'off' : ''}"
+           :text {formattime(EWW_TIME, "%a")})
+    (label :text " ")
+    (label :text {formattime(EWW_TIME, "%d %b, %Y")})
+))

@@ -1,0 +1,63 @@
+$font-color: #dedede;
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+* {
+  all: unset;
+  animation: fade-in 1s ease-out;
+}
+
+
+.main {
+  font-size: 15px;
+  font-family:
+    "Audiowide", "M PLUS 1", "Days One", "Roboto Mono", "SymbolsNerdFont";
+  text-shadow: -5px 3px 4px rgba(0, 0, 0, 0.6);
+  color: $font-color;
+
+  &.left {
+    /* Fix visual bag (shadow) */
+    padding-left: 1.1em;
+  }
+
+  .clock {
+    font-size: 10em;
+  }
+
+  .date {
+    margin-top: -1em;
+    
+    font-size: 2em;
+    .day.off { color: #fc374e; }
+  }
+  
+  .sysmon {
+    margin-top: 12em;
+    * { margin-bottom: 0.2em; }
+    .title { margin-bottom: 0.5em; }
+    
+    font-size: 1.5em;
+    .icon {
+      font-size: 1.3em;
+      /* Fix no monospaced font */
+      min-width: 1.3em;
+    }
+    .load {
+      font-size: 1em;
+      padding-bottom: 0.15em;
+      letter-spacing: 0.05em;
+    }
+  }
+
+  .greeter {
+    font-size: 4em;
+    .username {
+      margin-top: -0.05em;
+      font-size: 1.3em;
+      font-weight: bold;
+    }
+  }
+}

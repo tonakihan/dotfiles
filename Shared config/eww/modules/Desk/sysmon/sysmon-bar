@@ -1,0 +1,60 @@
+#!/bin/bash
+
+# Deepend on vmstat,awk,free,df,sed
+
+LENGTH=15
+
+FILL_CHAR="⣿"
+EDGE_CHAR="⣦"
+BLANK_CHAR="⣀"
+
+params() {
+  case $* in
+    "--cpu")
+      Percent_use=$(( 100 - $(vmstat 1 2 | tail -1 | awk '{print $15}') ))
+      ;;
+    "--ram"|"--mem")
+      Percent_use=$((
+        $(
+          free | awk '/^Mem:/ {print $3}'
+        ) * 100 / $(
+          free | awk '/^Mem:/ {print $2}'
+        )
+      ))
+      ;;
+    "--disk")
+      Percent_use=$(df / | awk 'NR==2 {print $5}' | sed 's/%//')
+      ;;
+  esac
+}
+
+calc_bar() {
+    local fill=$(( $1 * $LENGTH / 100 ))
+
+    awk \
+      -v fill=$fill \
+      -v char_fill=$FILL_CHAR \
+      -v char_edge=$EDGE_CHAR \
+      -v char_blank=$BLANK_CHAR \
+      -v len=$LENGTH \
+    'BEGIN {     
+        while (a++ < fill)
+          printf char_fill;
+        if (a < len)
+          printf char_edge;
+        while (a++ < len)
+          printf char_blank;
+
+        print
+    }'
+}
+
+main() {
+    if test $# -gt 0
+    then params $@
+    else echo "ERROR: Required params" && exit 1
+    fi
+
+    calc_bar $Percent_use
+}
+main $@

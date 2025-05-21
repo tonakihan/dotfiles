@@ -1,0 +1,43 @@
+(include "modules/time.yuck")
+(include "modules/Desk/sysmon/main.yuck")
+(include "modules/Desk/date.yuck")
+(include "modules/Desk/greeter.yuck")
+
+
+(defwindow left
+   :monitor 0
+   :stacking "bg"
+   :wm-ignore false
+   :geometry (geometry :x "7%" :y "15%" :width "30%" :height "80%" )
+  (left_group))
+
+(defwindow right
+   :monitor 0
+   :stacking "bg"
+   :wm-ignore false
+   :geometry (geometry :x "63%" :y "25%" :width "30%" :height "80%" )
+  (right_group))
+
+
+; ___________________________________________________________________
+(defwidget left_group []
+  (box :class "main left"
+     :orientation "vertical" :valign "start"
+     :space-evenly false
+    (box
+       :orientation "vertical" :halign "start"
+       :space-evenly false
+      (time :class "clock" :halign "start")
+      (date))
+    (sysmon)
+))
+
+
+(defwidget right_group []
+  (box :class "main right"
+     :orientation "vertical"
+     :space-evenly false
+    (greeter)
+))
+
+

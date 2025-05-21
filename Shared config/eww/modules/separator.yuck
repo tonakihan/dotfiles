@@ -1,0 +1,4 @@
+
+(defwidget separator [val ?class]
+  (label :text val
+         :class "separator ${class}"))

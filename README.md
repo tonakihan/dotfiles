@@ -8,6 +8,8 @@ cd dotfiles
 chmod 755 setup.sh
 ./setup.sh
 ```
+### EWW
+После установки зайти в '~.config/eww' и прочитать 'README.md'
 
 ## Подробнее
 

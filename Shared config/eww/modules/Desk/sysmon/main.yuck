@@ -1,0 +1,50 @@
+(defpoll cpubar  :interval "1s" `$EWW_CONFIG_ROOT/modules/Desk/sysmon/sysmon-bar --cpu`)
+(defpoll rambar  :interval "1s" `$EWW_CONFIG_ROOT/modules/Desk/sysmon/sysmon-bar --ram`)
+(defpoll diskbar :interval "1s" `$EWW_CONFIG_ROOT/modules/Desk/sysmon/sysmon-bar --disk`)
+(defpoll fan     :interval "1s" `sensors | awk -v IGNORECASE=1 '/cpu/ && /fan/' | tr -d -c 0-9`)
+
+
+(defwidget sysmon []
+	(box
+      :class "sysmon"
+      :orientation "vertical" :valign "start"
+      :space-evenly false
+     (label :class "title"
+           :halign "start"
+           :text "System Monitor")
+
+          ; cpu
+          (box :class "item"
+                :space-evenly false
+               (label :class "icon" :text "")
+               (label :class "load" :text "${cpubar}"))
+
+          ; ram
+          (box :class "item"
+                :space-evenly false
+               (label :class "icon" :text "")
+               (label :class "load" :text "${rambar}"))
+            
+          ; disk
+          (box :class "item"
+                :space-evenly false
+               (label :class "icon" :text "")
+               (label :class "load" :text "${diskbar}"))
+
+          ; gap
+          (label :class "item" :text " ")
+
+          ; fan
+          (box :class "item"
+                :space-evenly false
+               (label :class "icon" :text "󰈐")
+               (label :class "text" :text "${fan} RPM"))
+          ; temp
+          (box :class "item"
+                :space-evenly false
+               (label :class "icon" :text "󰏈")
+               (label :class "text" :text "${EWW_TEMPS.ASUS_WMI_SENSORS_CPU_TEMPERATURE}°C | ${EWW_TEMPS.AMDGPU_JUNCTION}°C"))
+            
+ ;           (label :class "sysmon-item sysmon-label" :halign "start" :text "  ${round(EWW_NET.wlp45s0.NET_UP / 1000, 1) } kB/s") ;; net up
+ ;           (label :class "sysmon-item sysmon-label" :halign "start" :text "  ${round(EWW_NET.wlp45s0.NET_DOWN / 1000, 1) } kB/s") ;; net down
+))

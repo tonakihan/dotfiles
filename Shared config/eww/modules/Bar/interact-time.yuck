@@ -1,0 +1,16 @@
+(include "${get_env('EWW_CONFIG_ROOT')}/modules/time.yuck")
+
+(defvar time_show true)
+
+(defwidget interact-time [orientation]
+  (button
+       :class "interact-time"
+       :onclick "$EWW_CONFIG_ROOT/utils/toggle time_show"
+      (literal
+        :valign { orientation == "h" ? "center" : '' }
+        :content { time_show ?
+         '(time)' :
+         '(label :text {formattime(EWW_TIME, "%d.%m.%Y")})'}
+      )
+))
+

@@ -1,43 +1,47 @@
 #!/usr/bin/env bash
 
-# Попробывать заставить подключаться к одному server
-
 setEnv() {
   # Требуется для работы с indclude modules
-  EWW_MAIN_CONFIG_DIR=$(realpath $(dirname $0))
-  export EWW_MODULES_DIR="$EWW_MAIN_CONFIG_DIR/modules"
+  export EWW_CONFIG_ROOT=$(realpath $(dirname $0))
 }
 
-checkDeepend() {
-  # eww
+checkEww() {
   if not which eww &>/dev/null; then
     echo "Not found eww in env PATH." &>2;
     exit 1;
   fi
 }
 
-launchEwwDaemon() {
+killEww() {
+  killall eww &>/dev/null
+
   while pgrep eww &>/dev/null; do
-    killall eww &>/dev/null
     sleep 1
   done
-  eww daemon;
-  sleep 1;
 }
 
 launchEwwWindow() {
   for window in $@; do
     echo "open $window"
-    eww close --config="$EWW_MAIN_CONFIG_DIR/window/$window" $window
-    eww --logs --config="$EWW_MAIN_CONFIG_DIR/window/$window" open $window
+
+    if (echo $window | grep '/' &>/dev/null)
+    then
+      dir=$(echo $window | sed 's/\/\w*//')
+      window=$(echo $window | sed 's/^\w*\///')
+    else dir=$window
+    fi
+
+    export EWW_CONFIG_HOME="$EWW_CONFIG_ROOT/window/$dir"
+    eww --config="$EWW_CONFIG_HOME" open $window
   done;
 }
 
-main() {
-  checkDeepend;
-  setEnv;
-  launchEwwDaemon; # Оно не принимает скрипты не убивая
-  launchEwwWindow bar
-}
 
+main() {
+  checkEww;
+  setEnv;
+  killEww;
+
+  launchEwwWindow bar desk/left desk/right
+}
 main;
