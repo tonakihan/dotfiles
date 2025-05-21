@@ -12,6 +12,7 @@
 !/Shared\ config/handlr
 !/Shared\ config/helix
 !/Shared\ config/kitty
+!/Shared\ config/logrotate
 !/Shared\ config/MangoHud
 !/Shared\ config/mimeapps.list
 !/Shared\ config/neofetch
