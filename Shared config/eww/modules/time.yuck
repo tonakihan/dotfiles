@@ -1,0 +1,6 @@
+(defwidget time [?halign ?class]
+  (label
+      :halign "${halign}"
+      :class "${class}"
+      :text {formattime(EWW_TIME, "%R")})
+)

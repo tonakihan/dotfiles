@@ -33,7 +33,7 @@ mesa-utils lib32-mesa opencl-mesa gamemode vulkan-tools vulkan-mesa-layers lib32
 `alacritty` - Терминал  
 `hyprlock` - Блокировка экрана  
 `swayidle` - Управляет автоматической блокировкой экрана по истечению времени и уходом в сон  
-`hyprpicker` - _Не помню_  
+`hyprpicker` - Необходми `xdg-desktop-portal` для screen share  
 `swaync` - Показывает всплывающие уведомления  
 `loupe` - Просмоторщик изображений из gnome  
 `pipewire` `wireplumber` - Аудио. Из аналогов есть `pulseaudio`  

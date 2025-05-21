@@ -1,0 +1,10 @@
+(deflisten window :initial "..." "$EWW_CONFIG_ROOT/modules/hyprland/window-title/get-window-title.sh")
+
+
+(defwidget window-title []
+  (box :class "window-title"
+    (label
+      :truncate true
+      ;:limit-width 1000 ;BUG После 69 символов все ломается. И значение не реагируетю
+      :text "${window}"
+)) )

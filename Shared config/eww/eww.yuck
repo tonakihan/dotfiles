@@ -1,0 +1,12 @@
+(defwindow test
+    :monitor 0
+    :geometry (geometry :width "1920px"
+                        :height "25px"
+                        :anchor "bottom center")
+    :stacking "fg"
+    :exclusive true ;Резервирование места от WM
+    :namespace "bar"
+    :focusable false
+   (button :onclick "echo ${EWW_TEMPS} | tee -a /tmp/temps" "get temps"))
+
+

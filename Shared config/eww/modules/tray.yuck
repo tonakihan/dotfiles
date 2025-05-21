@@ -1,0 +1,5 @@
+(defwidget tray []
+  (box
+     :class "tray"
+    (systray
+      :icon-size G_iconSize)))

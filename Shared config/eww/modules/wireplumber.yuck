@@ -1,0 +1,32 @@
+; TODO Добваить возможность отключения микрофона
+
+(defpoll volume_precent
+          :initial "0"
+          :interval "3s"
+        "wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print $2 * 100}'")
+(defpoll volume_muted
+          :initial ""
+          :interval "5s"
+        "wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print $3}'")
+
+(defwidget volume []
+  (box ; Oсобенность. Для css padding-right всех модулей
+     :class "volume"
+     :tooltip "Volume ${volume_precent}"
+  ;circle mode
+  (eventbox
+     :onscroll "if test {} = 'up';
+        then wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%+;
+        else wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-;
+      fi
+      eww -c=$EWW_CONFIG_HOME poll volume_precent;
+      "
+     :onclick "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle;
+               eww -c=$EWW_CONFIG_HOME poll volume_muted"
+    (circular-progress
+       :value volume_precent
+       :thickness 3
+       :class {volume_muted == "[MUTED]" ? "mute" : ""}
+      (label ; Особенность. Нужен для css font-size И вырезания центра (перекрытия).
+        :text "⬤"
+        :limit-width 2) ))))

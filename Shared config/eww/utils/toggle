@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+# Accept a eww the boolean varibale   
+
+EWW="eww"
+if test -n "$EWW_CONFIG_HOME"; then
+  EWW="$EWW --config=$EWW_CONFIG_HOME"
+else
+  echo "WARNING: env var EWW_CONFIG_HOME not set!";
+fi
+
+res=$($EWW get $1)
+
+if test $? != 0; then
+  echo "Fail. Maybe the eww dosen't have a variable like $1" >&2
+  exit 1;
+fi
+
+if test $res = "false"; then
+  $EWW update $1=true
+elif test $res = "true"; then
+  $EWW update $1=false
+else
+  echo "Fail. The variable not a boolean type" >&2
+  exit 1;
+fi
+

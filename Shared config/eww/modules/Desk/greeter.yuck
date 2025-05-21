@@ -1,0 +1,21 @@
+(defpoll user :interval "1h"
+    `if test -z $(getent passwd "$USER" | cut -d ':' -f 5 | cut -d ',' -f 1)
+    then echo $\{USER^\}
+    fi`)
+
+
+(defwidget greeter []
+  (box :class "greeter"
+     :orientation "vertical" :halign "end"
+
+    (label :text {
+        formattime(EWW_TIME, "%H") > 4 &&
+        formattime(EWW_TIME, "%H") < 11 ? "Good Morning," :
+        formattime(EWW_TIME, "%H") < 14 ? "Good Afternoon," :
+        formattime(EWW_TIME, "%H") < 17 ? "Good Day," :
+        formattime(EWW_TIME, "%H") < 22 ? "Good Evening," :
+        "Good Night,"
+      }
+    )
+    (label :class "username" :halign "end" :text "${user}")
+))

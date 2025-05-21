@@ -1,0 +1,86 @@
+(include "modules/Bar/interact-time.yuck");
+(include "modules/hyprland/workspaces/main.yuck");
+(include "modules/hyprland/window-title/main.yuck");
+(include "modules/power-menu/main.yuck");
+(include "modules/wireplumber.yuck"); Provide volume
+(include "modules/tray.yuck");
+(include "modules/vpn-toggle.yuck"); wg-vpn-toggle
+(include "modules/hyprland/indicator/fullscreen/main.yuck")
+(include "modules/separator.yuck")
+
+
+(defwindow bar
+    :monitor 0
+    :geometry (geometry :width "1920px"
+                        :height "40px"
+                        :anchor "top center")
+    :stacking "fg"
+    :exclusive true ;Резервирование места от WM
+    :namespace "bar"
+    :focusable false
+    (main-containter)
+)
+
+(defwidget main-containter []
+    (box
+         :space-evenly true ; FIXME: css
+        (left)
+        (center)
+        (right)
+))
+
+
+
+; Common settings of bar.
+; G - means is gloabal var
+(defvar isSpaceEvenly false)
+(defvar G_iconSize 16)
+
+; Start of bar
+(defwidget left []
+    (box :class "island left"
+         :orientation "horizontal"
+         :halign "start"
+         :space-evenly isSpaceEvenly
+        (workspaces)
+))
+;
+; Center of bar
+(defwidget center []
+    (box :class "island center"
+         :orientation "horizontal"
+         :halign "center"
+         :space-evenly isSpaceEvenly
+        (window-title)
+))
+;
+; End of bar
+(defwidget right []
+    (box :class "right"
+         :orientation "horizontal"
+         :halign "end"
+         :space-evenly isSpaceEvenly
+        (fullscreen :class "island")
+        (right_partTwo)
+))
+
+
+;(defwidget right_partOne []
+;  (box :class "island"
+;    (fullscreen)
+;))
+;
+(defwidget right_partTwo []
+    (box :class "island"
+         :orientation "horizontal"
+         :halign "end"
+         :space-evenly isSpaceEvenly
+        (tray)
+        (wg-vpn-toggle)
+        (separator :val "|")
+        (volume)
+        (separator :val "|")
+        (power-menu)
+        (separator :val "|")
+        (interact-time :orientation "h")
+))

@@ -1,0 +1,22 @@
+; Можно добавить окно требующее внимания - urgent в socket2
+
+(deflisten workspaces :initial "[]" "$EWW_CONFIG_ROOT/modules/hyprland/workspaces/workspaces.sh get-workspaces")
+(deflisten current_workspace :initial "1" "$EWW_CONFIG_ROOT/modules/hyprland/workspaces/workspaces.sh get-active-workspace")
+
+
+(defwidget workspaces []
+  (eventbox
+      :onscroll "$EWW_CONFIG_ROOT/modules/hyprland/workspaces/workspaces.sh change-active-workspace {} ${current_workspace}"
+  (box
+      :class "workspaces"
+      :space-evenly false 
+
+     (for workspace in workspaces
+        (button
+            :class "workspace-item ${workspace.id == current_workspace ? "current" :
+                                     workspace.windows > 0 ?             "occupied":
+                                                                         "empty"}"
+            :onclick "hyprctl dispatch workspace ${workspace.id}"
+           (label :text "${workspace.name}")
+    ))
+))) 

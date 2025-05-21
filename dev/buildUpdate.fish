@@ -5,6 +5,8 @@
 # u - user
 # F - files 
 
+# TODO - переписываем на python
+
 function main
     cd ..
     getConfigHome
@@ -13,6 +15,41 @@ function main
     updateFiles
     #addFilesToRepo
 end
+
+# ---- Utils
+# Declaration (not for use directly)
+function templatePrint --argument-names typePrint msg color
+    set -l noColor '\033[0m'
+    echo -e "$color$typePrint$noColor: $msg"
+end
+
+function templateError --argument-names typeError msg
+    if test -z typeError
+        set -a typeError ' '
+    end
+
+    templatePrint "$(typeError)ERROR" $msg &>2
+end
+
+# Utils tools
+
+function error --argument-names msg
+    templateError "" $msg
+end
+
+function fatalError --argument-names msg
+    templateError FATAL $msg
+    exit 1
+end
+
+function debug --argument-names msg
+    templatePrint DEBUG $msg ""
+end
+
+function info --argument-names msg
+    trmplatePrint INFO $msg
+end
+# ---- End utils  
 
 function getConfigHome
     echo "info: getConfigHome..."
@@ -140,6 +177,5 @@ function addFilesToRepo
             exit 1
     end
 end
-
 
 main

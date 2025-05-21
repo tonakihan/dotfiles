@@ -1,0 +1,14 @@
+; Сделать динамическим - что бы выезжало при наведении
+
+(defwidget power-menu [?json]
+  ; {json ?: json = "[]"}
+  (box
+     :class "power-menu"
+    (button
+       :onclick "PowerMenu"
+       :css "* {padding: 0}"
+      (label :text "⏻"
+             :css "* {padding-right: 0.25em}")
+)))
+
+
