@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# TODO: Понять и упростить, если возможно
 
 # -- User env difinitions ---------------
 #NUMBER_WORKSPACES=8

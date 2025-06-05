@@ -32,7 +32,7 @@ launchEwwWindow() {
     fi
 
     export EWW_CONFIG_HOME="$EWW_CONFIG_ROOT/window/$dir"
-    eww --config="$EWW_CONFIG_HOME" open $window
+    eww --config="$EWW_CONFIG_HOME" open $window &
   done;
 }
 
@@ -43,5 +43,6 @@ main() {
   killEww;
 
   launchEwwWindow bar desk/left desk/right
+  wait
 }
 main;

@@ -1,6 +1,5 @@
 (deflisten window :initial "..." "$EWW_CONFIG_ROOT/modules/hyprland/window-title/get-window-title.sh")
 
-
 (defwidget window-title []
   (box :class "window-title"
     (label

@@ -17,5 +17,5 @@ checkDepend vmstat awk free df sed
  
 
 # For all
-checkDepend logrotate crontab
+checkDepend eww logrotate crontab
 searchFonts "Audiowide" "Days One" "SymbolsNerdFont"
