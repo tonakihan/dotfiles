@@ -135,7 +135,7 @@ swww img /путь/до/вашего/изображения.img
 Нужно создать '.desktop' файл в `$HOME/.config/autostart`.  
 Подробнее о '.desktop' файле [здесь](https://wiki.archlinux.org/title/Desktop_entries_(Русский)) и [здесь о переменных](https://specifications.freedesktop.org/desktop-entry-spec/latest/recognized-keys.html)
 
-- [vpnSwitch.sh](https://github.com/tonakihan/dotfiles/blob/main/Scripts/vpnSwitch.sh)  
+- [vpnSwitch.sh](https://github.com/tonakihan/dotfiles/blob/main/bin/vpnSwitch.sh)  
 Авторский скрипт для управление состоянием `wireguard` из `waybar`. Но перед началом необходимо настроить polkit.
 Скопируйте из `etc/polkit-1` файлы в вашу систему.
 ```sh

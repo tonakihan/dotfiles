@@ -11,7 +11,7 @@ if [[ $1 == "--help" ]]; then
       ./etc - config files (example) for /etc  [don't install]
       ./icons - later                          [by default save in ~/.local/share/icons]
       ./screenshots - example workspaces       [don't install]
-      ./Scripts - my local scripts             [don't install]
+      ./bin - my local scripts                 [don't install]
       ./"Shared config" - um...                [by default save in ~/.config]
       ./themes - later                         [by default save in ~/.local/share/themes]
       ./WM - environment specific config files [by default save in ~/.config]

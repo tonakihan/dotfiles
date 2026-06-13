@@ -1,8 +1,8 @@
 # dotfiles
-<p align="center"><img width=70% src="preview/hyprland-1.jpg" /></p>
+<p align="center"><img width=70% src=".examples/hyprland-1.jpg" /></p>
 <p align="center">
-  <img width=30% src="preview/hyprland-2.jpg" />
-  <img width=30% src="preview/hyprland-3.jpg" />
+  <img width=30% src=".examples/hyprland-2.jpg" />
+  <img width=30% src=".examples/hyprland-3.jpg" />
 </p>
 
 ## Installation

@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# Показявает каталог => устоновка => Снова католог
+
 clear
 printf "*** RUN TEST ***\n\n"
 
@@ -18,7 +20,7 @@ echo
 
 # test user is not root
 if [ $(id -u) -eq 0 ]; then
-  echo "CRITICAL ERROR: Script should not run as root user"
+  echo "[CRITICAL ERROR] Script should not run as root user"
   exit 1
 fi
 
